@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+*{
+  padding: 0;
+  margin:0;
+  box-sizing: border-box;
+  font-family: Arial;
+
+}
+body{
+  min-height: 100vh;
+
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.app{
+  width: 100%;
+  margin: auto;
+  background-color: #fafafc;
+
+}
+.navbar {
+  position: fixed; /* Fixed at the top */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  background: rgba(254, 254, 254, 0.6); /* Semi-transparent white */
+  align-items: center;
+  backdrop-filter: blur(10px); /* Increase blur effect */
+  padding: 5px 40px;
+
+}
+
+.navbar ol, ul, dl {
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+
+
+@keyframes identifier {
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity: 1;
+  }
+  
+}
