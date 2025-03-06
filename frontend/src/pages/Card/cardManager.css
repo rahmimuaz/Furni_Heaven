@@ -1,23 +1,45 @@
-
 .container {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+    max-width: 100px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5; /* Optional background color */
+    padding: 20px;
+}
 
-  
+
+/* Scrollable container for form and card details */
+.scroll-container {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 70%;
 }
 
 /* Form styling */
 form {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 form input,
 form select {
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     margin: 8px 0;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -25,8 +47,8 @@ form select {
 }
 
 form button {
-    padding: 10px;
-    margin: 8px 0;
+    width: 100%;
+    padding: 12px;
     border: none;
     border-radius: 4px;
     background-color: #007bff;
@@ -73,10 +95,21 @@ button.delete-card-btn:hover {
     background-color: #c82333;
 }
 
+/* Scrollable card details section */
+.card-details-container {
+    max-height: 250px; /* Adjust height as needed */
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 10px;
+}
+
 /* Card display section */
 .card-details {
     background-color: #f9f9f9;
-    padding: 10px;
+    padding: 15px;
     border-radius: 6px;
     margin: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -84,6 +117,7 @@ button.delete-card-btn:hover {
 
 .card-details p {
     margin: 6px 0;
+    font-size: 1em;
 }
 
 /* Modal styling */
@@ -131,3 +165,12 @@ button.delete-card-btn:hover {
 .modal button.close-btn:hover {
     background-color: #5a6268;
 }
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full height */
+    background-color: #f4f4f4; /* Optional: Light background for contrast */
+    padding: 20px;
+}
+

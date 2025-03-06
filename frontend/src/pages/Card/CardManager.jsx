@@ -88,45 +88,50 @@ const Card = () => {
     };
 
     return (
-        <div>
-            <h1>{editCardId ? 'Edit Your Card' : 'Add Your Card'}</h1>
-            <form onSubmit={addCard}>
-                <input type="text" placeholder="Card Number" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} required />
-                <input type="text" placeholder="Card Holder Name" value={cardHolderName} onChange={(e) => setCardHolderName(e.target.value)} required />
-                <input type="month" placeholder="Expiry Date" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} required />
-                <select value={cardType} onChange={(e) => setCardType(e.target.value)} required>
-                    <option value="Debit">Debit Card</option>
-                    <option value="Credit">Credit Card</option>
-                </select>
-                <input type="text" placeholder="Unique Code" value={uniqueCode} onChange={(e) => setUniqueCode(e.target.value)} required />
-                <button type="submit">Add Card</button>
-            </form>
-
-            <h1>Retrieve Your Card by Unique Code</h1>
-            <form onSubmit={(e) => { e.preventDefault(); fetchCardByCode(uniqueCode).then(setCards); }}>
-                <input type="text" placeholder="Unique Code" value={uniqueCode} onChange={(e) => setUniqueCode(e.target.value)} required />
-                <button type="submit">Retrieve Card</button>
-            </form>
-
-            {message && <p>{message}</p>}
-            {Array.isArray(cards) && cards.length === 0 && <p>No cards found for this unique code.</p>}
-            {Array.isArray(cards) && cards.length > 0 && (
-                <div>
-                    <h2>Your Card Details</h2>
-                    {cards.map((c) => (
-                        <div key={c._id}>
-                            <p>Card Number: {c.cardNumber}</p>
-                            <p>Card Holder Name: {c.cardHolderName}</p>
-                            <p>Expiry Date: {c.expiryDate}</p>
-                            <p>Card Type: {c.cardType}</p>
-                            <button onClick={() => handleEditCard(c)}>Edit</button>
-                            <button onClick={() => handleDeleteCard(c._id)}>Delete</button>
-                        </div>
-                    ))}
+        <div className="wrapper"> {/* Wrapper to center content */}
+            <div className="container">
+                <h1>{editCardId ? 'Edit Your Card' : 'Add Your Card'}</h1>
+        
+                <div className="scroll-container">
+                    <form onSubmit={addCard}>
+                        <input type="text" placeholder="Card Number" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} required />
+                        <input type="text" placeholder="Card Holder Name" value={cardHolderName} onChange={(e) => setCardHolderName(e.target.value)} required />
+                        <input type="month" placeholder="Expiry Date" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} required />
+                        <select value={cardType} onChange={(e) => setCardType(e.target.value)} required>
+                            <option value="Debit">Debit Card</option>
+                            <option value="Credit">Credit Card</option>
+                        </select>
+                        <input type="text" placeholder="Unique Code" value={uniqueCode} onChange={(e) => setUniqueCode(e.target.value)} required />
+                        <button type="submit" className="add-card-btn">Add Card</button>
+                    </form>
+        
+                    <h1>Retrieve Your Card by Unique Code</h1>
+                    <form onSubmit={(e) => { e.preventDefault(); fetchCardByCode(uniqueCode).then(setCards); }}>
+                        <input type="text" placeholder="Unique Code" value={uniqueCode} onChange={(e) => setUniqueCode(e.target.value)} required />
+                        <button type="submit" className="retrieve-card-btn">Retrieve Card</button>
+                    </form>
                 </div>
-            )}
-
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={updateCard} cardData={{ cardNumber, cardHolderName, expiryDate, cardType }} />
+        
+                {message && <p>{message}</p>}
+                {Array.isArray(cards) && cards.length === 0 && <p>No cards found for this unique code.</p>}
+                {Array.isArray(cards) && cards.length > 0 && (
+                    <div className="card-details-container">
+                        <h2>Your Card Details</h2>
+                        {cards.map((c) => (
+                            <div className="card-details" key={c._id}>
+                                <p>Card Number: {c.cardNumber}</p>
+                                <p>Card Holder Name: {c.cardHolderName}</p>
+                                <p>Expiry Date: {c.expiryDate}</p>
+                                <p>Card Type: {c.cardType}</p>
+                                <button className="edit-card-btn" onClick={() => handleEditCard(c)}>Edit</button>
+                                <button className="delete-card-btn" onClick={() => handleDeleteCard(c._id)}>Delete</button>
+                            </div>
+                        ))}
+                    </div>
+                )}
+        
+                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={updateCard} cardData={{ cardNumber, cardHolderName, expiryDate, cardType }} />
+            </div>
         </div>
     );
 };
