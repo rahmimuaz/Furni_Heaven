@@ -22,8 +22,9 @@ a{
   background-color: #ffe7ce;
 
 }
+
 .navbar {
-  position: fixed; /* Fixed at the top */
+  position: fixed; /*Fixed at the top*/ 
   top: 0;
   width: 100%;
   z-index: 1000;
