@@ -35,7 +35,7 @@ const Header = ({ scrollToProducts }) => {
       
       <div className="header-contents">
         <h2>Bringing timeless beauty to every space</h2>
-        <p>Explore our wide range of premium furniture to transform your space. Whether you're looking for elegant home décor or durable office furniture, find everything you need at FERNIHAVEN. Start creating your perfect space today!</p>
+        <p>Explore our wide range of premium furniture to transform your space.<br/>Whether you're looking for elegant home décor or durable office furniture,<br/>find everything you need at FERNIHAVEN. Start creating your perfect space today!</p>
         <button onClick={scrollToProducts}>View Shop</button>
       </div>
     </div>

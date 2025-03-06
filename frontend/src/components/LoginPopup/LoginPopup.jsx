@@ -8,16 +8,28 @@ const LoginPopup = ({ setShowLogin }) => {
     const { url, setToken } = useContext(StoreContext);
     const [currState, setCurrentState] = useState("Login");
     const [data, setData] = useState({ name: "", email: "", password: "" });
+    const [errors, setErrors] = useState({});
 
     const onChangeHandler = (event) => {
         const { name, value } = event.target;
         setData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const validatePassword = (password) => {
+        const passwordCriteria = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        return passwordCriteria.test(password);
     };
     const onLogin = async (event) => {
         event.preventDefault();
         if (!data.email || !data.password || (currState === "Sign Up" && !data.name)) {
             alert("Please fill in all fields");
             return;
+        }
+        if (!validatePassword(data.password)) {
+            setErrors(prev => ({ ...prev, password: "Password must be at least 8 characters long and contain at least one letter and one number." }));
+            return;
+        } else {
+            setErrors(prev => ({ ...prev, password: "" }));
         }
     
         let endpoint = currState === "Login" ? "/api/user/login" : "/api/user/register";
@@ -55,17 +67,23 @@ const LoginPopup = ({ setShowLogin }) => {
                 </div>
                 <div className="login-popup-input">
                     {currState === "Sign Up" && (
-                        <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' required />
+                        <>
+                            <label className="form-label" style={{ color: 'black' }}><b>Full Name:</b></label>
+                            <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Simon Jhon' required />
+                        </>
                     )}
-                    <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' required />
-                    <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Password' required />
+                    <label className="form-label" style={{ color: 'black' }}><b>Email:</b></label>
+                    <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='jhon@gmail.com' required />
+                    <label className="form-label" style={{ color: 'black' }}><b>Password:</b></label>
+                    <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Password must be 8 characters' required />
+                    {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
                 </div>
                 <button type='submit'>{currState === "Sign Up" ? "Create account" : "Login"}</button>
 
                 {currState === "Sign Up" && (
                     <div className="login-popup-condition">
                         <input type="checkbox" required />
-                        <p>By continuing, I agree to the terms of use and privacy policy</p>
+                        <p>By continuing, I agree to the <span>terms of use</span> and <span>privacy policy</span></p>
                     </div>
                 )}
 

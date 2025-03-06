@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "./contactUsForm.css";
-import { Card } from "@mui/material"; // Optional import if you're using Card component
-import { createNotify } from "./ToastMessages"; // Custom notification function
-import { Bounce, ToastContainer } from "react-toastify"; // Toast notifications
-import CheckCircleIcon from "@mui/icons-material/CheckCircle"; // Success icon
-import ListAltIcon from '@mui/icons-material/ListAlt'; // Inquiry list icon
+import { ToastContainer, Bounce } from "react-toastify";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import { createNotify } from "./ToastMessages";
 
 const ContactUsForm = () => {
   const [formData, setFormData] = useState({
-    username: "", // Initialize without stored name
-    email: "", // Initialize without stored email
+    username: "",
+    email: "",
     message: "",
   });
 
@@ -19,28 +18,18 @@ const ContactUsForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  // Prefill form with values from localStorage
   useEffect(() => {
-    const storedName = localStorage.getItem('name') || ''; // Retrieve name from localStorage
-    const storedEmail = localStorage.getItem('email') || ''; // Retrieve email from localStorage
-    setFormData({
-      username: storedName, // Set stored name
-      email: storedEmail, // Set stored email
-      message: "",
-    });
-  }, []); // Empty dependency array ensures this runs once on mount
+    const storedName = localStorage.getItem("name") || "";
+    const storedEmail = localStorage.getItem("email") || "";
+    setFormData({ username: storedName, email: storedEmail, message: "" });
+  }, []);
 
-  // Handle input changes
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Validate form fields
   const validateForm = () => {
     const newErrors = {};
     if (!formData.username) newErrors.username = "Username is required";
@@ -49,26 +38,20 @@ const ContactUsForm = () => {
       newErrors.email = "Email is invalid";
     if (!formData.message) newErrors.message = "Message is required";
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return; // Stop if validation fails
+    if (!validateForm()) return;
 
     try {
-      const response = await axios.post(
-        "http://localhost:5001/inquiries",
-        formData
-      );
-      createNotify("Inquiry submitted successfully!"); // Show success notification
+      await axios.post("http://localhost:5001/inquiries", formData);
+      createNotify("Inquiry submitted successfully!");
       setStatusMessage("Inquiry submitted successfully!");
-      setIsSubmitted(true); // Set submitted state
-      setFormData({ username: "", email: "", message: "" }); // Clear form message
-      setErrors({}); // Clear errors
-      // Optionally navigate to another page
-      // navigate('/queries');
+      setIsSubmitted(true);
+      setFormData({ username: "", email: "", message: "" });
+      setErrors({});
     } catch (error) {
       console.error("Error submitting inquiry:", error);
       setStatusMessage("Failed to submit inquiry. Please try again.");
@@ -76,103 +59,63 @@ const ContactUsForm = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center" style={{ margin: "0 auto" }}>
-      {isSubmitted ? (
-        <div className="d-flex flex-column justify-content-center align-items-center">
-          <CheckCircleIcon style={{ color: "#36b936", fontSize: "60px" }} />
-          <p className="mt-5" style={{ fontSize: "50px", color: "black" }}>
-            Thanks for contacting us!
-          </p>
-          <button
-            className="btn btn-warning fw-bold mt-5"
-            style={{ width: "100%" }}
-            onClick={() => { navigate("/queries") }} // Navigate to inquiries
-          >
-            <ListAltIcon />{" "}View my inquiries
-          </button>
-        </div>
-      ) : (
-        <div
-          className="card shadow-sm d-flex flex-column align-items-center justify-content-center w-50 p-5 mt-5"
-          style={{ backgroundColor: "" }}
-        >
-          <p className="" style={{ fontWeight: 600, fontSize: "40px", color: "black" }}>
-            Contact us
-          </p>
-          {statusMessage && (
-            <p style={{ color: statusMessage.includes("Failed") ? "red" : "green" }}>
-              {statusMessage}
-            </p>
+    <div className="contact-container d-flex flex-column align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+    {/* Video Element
+    <video className="video-background" controls muted autoPlay>
+        <source src="/homepage.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video> */}
+
+      <div className="d-flex flex-row justify-content-center align-items-stretch gap-4 w-100" style={{ maxWidth: "1200px" }}>
+        {/* Contact Us Form Box */}
+        <div className="contact-form-box card shadow-sm p-5" style={{ flex: 1, minWidth: "300px" }}>
+          {isSubmitted ? (
+            <div className="text-center">
+              <CheckCircleIcon style={{ color: "#36b936", fontSize: "60px" }} />
+              <p className="mt-5" style={{ fontSize: "30px", color: "black" }}>Thanks for contacting us!</p>
+              <button className="btn btn-warning fw-bold mt-5" onClick={() => navigate("/queries")}>
+                <ListAltIcon /> View my inquiries
+              </button>
+            </div>
+          ) : (
+            <>
+              <p className="fw-bold" style={{ fontSize: "30px", color: "black" }}>Contact Us</p>
+              {statusMessage && <p style={{ color: statusMessage.includes("Failed") ? "red" : "green" }}>{statusMessage}</p>}
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label className="form-label fw-bold" htmlFor="username">Username</label>
+                  <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} className="form-control" />
+                  {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
+                </div>
+                <div className="mt-3">
+                  <label className="form-label fw-bold" htmlFor="email">Email</label>
+                  <input type="email" id="email" name="email" value={formData.email} className="form-control" disabled />
+                </div>
+                <div className="mt-3">
+                  <label className="form-label fw-bold" htmlFor="message">Message</label>
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} className="form-control"></textarea>
+                  {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
+                </div>
+                <button className="btn btn-dark w-100 rounded-3 mt-4" type="submit">Submit</button>
+              </form>
+            </>
           )}
-          <form className="w-100" onSubmit={handleSubmit}>
-            <div>
-              <label className="form-label fw-bold" htmlFor="username" style={{ display: "block", marginBottom: "5px" }}>
-                Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                className="form-control"
-                style={{ width: "100%", boxSizing: "border-box" }}
-              />
-              {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
-            </div>
-            <div className="mt-4">
-              <label className="form-label fw-bold" htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="form-control"
-                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-                disabled
-              />
-              {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-            </div>
-            <div className="mt-4">
-              <label className="form-label fw-bold" htmlFor="message" style={{ display: "block", marginBottom: "5px" }}>
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="form-control"
-                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-              ></textarea>
-              {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
-            </div>
-            <button
-              className="w-100 rounded-3 mt-4"
-              type="submit"
-              style={{ padding: "10px 20px", cursor: "pointer", backgroundColor: "black", color: "white" }}
-            >
-              Submit
-            </button>
-          </form>
         </div>
-      )}
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-        theme="light"
-        transition={Bounce}
-      />
+
+        {/* AI Chat Box */}
+        <div className="ai-chat-box" style={{ flex: 1, minWidth: "300px", border: "1px #774625", padding: "20px", borderRadius: "8px",backgroundColor:"#bcb4a2" }}>
+          <p className="text-center fw-bold" style={{ fontSize: "22px", textDecoration: "underline",color:"black" }}>Get Quick Answers</p>
+          <iframe
+            src="https://www.chatbase.co/chatbot-iframe/N584UKdgFYHKg6caTLFNC"
+            title="Chatbot"
+            width="100%"
+            style={{ height: "100%", minHeight: "500px", border: "none" }}
+            frameBorder="0"
+          />
+        </div>
+      </div>
+
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar theme="light" transition={Bounce} />
     </div>
   );
 };
