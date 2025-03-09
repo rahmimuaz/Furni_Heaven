@@ -27,10 +27,14 @@ const ProductDisplay = ({ category, products, scrollToProduct }) => { // Accept 
                                 name={item.name}
                                 description={item.description}
                                 price={item.retailPrice}
-                                image={`http://localhost:5001/images/${item.image}`} // Ensure the image path is correct
-                                onClick={() => {
-                                    handleProductClick(item._id);
-                                    scrollToProduct(item._id); // Scroll to the clicked product
+                                image={`http://localhost:5001/images/${item.image}`} 
+                                onClick={(id) => {
+                                    handleProductClick(id);
+                                    if (typeof scrollToProduct === "function") {
+                                        scrollToProduct(id);
+                                    } else {
+                                        console.error("scrollToProduct is not a function");
+                                    }
                                 }}
                             />
                         </div>

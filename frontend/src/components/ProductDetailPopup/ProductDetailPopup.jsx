@@ -5,12 +5,16 @@ import { StoreContext } from '../../context/StoreContext';
 
 const ProductDetailPopup = ({ product, onClose }) => {
     const { addToCart } = useContext(StoreContext);
-    const [selectedSize, setSelectedSize] = useState(""); // State to hold the selected size
-    const [updatedPrice, setUpdatedPrice] = useState(product.retailPrice); // State to hold the updated price
-    const [addedQuantity, setAddedQuantity] = useState(0); // Track total quantity added to cart
-    const navigate = useNavigate(); // Initialize navigate
+    const [selectedSize, setSelectedSize] = useState("");
+    const [updatedPrice, setUpdatedPrice] = useState(product.retailPrice);
+    const [addedQuantity, setAddedQuantity] = useState(0);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0); // Track current image index
+    const navigate = useNavigate();
 
     if (!product) return null;
+
+    // Ensure product.images is an array (fallback to an empty array if undefined)
+    const images = Array.isArray(product.images) ? product.images : [product.images];
 
     // Function to get size options based on category
     const getSizeOptions = (category) => {
@@ -24,37 +28,44 @@ const ProductDetailPopup = ({ product, onClose }) => {
         if (selectedSize) {
             let newPrice = product.retailPrice;
 
-            // Determine price adjustments based on the selected size
             if (product.category === "Paint") {
                 if (selectedSize === "4l") {
-                    newPrice = product.retailPrice; // Base price for 4l
+                    newPrice = product.retailPrice;
                 } else if (["500ml", "1l"].includes(selectedSize)) {
-                    newPrice *= 0.9; // Reduce price by 10%
+                    newPrice *= 0.9;
                 } else if (["10l", "20l"].includes(selectedSize)) {
-                    newPrice *= 1.1; // Increase price by 10%
+                    newPrice *= 1.1;
                 }
             } else {
-                // Assuming a similar logic for non-paint categories
                 if (selectedSize === "L") {
-                    newPrice = product.retailPrice; // Base price for L
+                    newPrice = product.retailPrice;
                 } else if (["S", "M"].includes(selectedSize)) {
-                    newPrice *= 0.9; // Reduce price by 10%
+                    newPrice *= 0.9;
                 } else if (["XL", "XXL"].includes(selectedSize)) {
-                    newPrice *= 1.1; // Increase price by 10%
+                    newPrice *= 1.1;
                 }
             }
 
-            setUpdatedPrice(newPrice); // Update the price state
+            setUpdatedPrice(newPrice);
         } else {
-            setUpdatedPrice(product.retailPrice); // Reset to base price if no size is selected
+            setUpdatedPrice(product.retailPrice);
         }
     }, [selectedSize, product.retailPrice, product.category]);
 
     // Handle the Add to Cart button click
     const handleAddToCart = () => {
-        const newAddedQuantity = addedQuantity + 1; // Increment quantity with each click
-        setAddedQuantity(newAddedQuantity); // Update the added quantity
-        addToCart(product._id, selectedSize, product.name, newAddedQuantity); // Pass the total accumulated quantity
+        const newAddedQuantity = addedQuantity + 1;
+        setAddedQuantity(newAddedQuantity);
+        addToCart(product._id, selectedSize, product.name, newAddedQuantity);
+    };
+
+    // Function to handle image navigation
+    const nextImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     };
 
     return (
@@ -63,14 +74,17 @@ const ProductDetailPopup = ({ product, onClose }) => {
                 <span className="close-btn" onClick={onClose}>&times;</span>
 
                 <div className="product-detail-left">
-                    <img 
-                        className="product-detail-image" 
-                        src={`http://localhost:5001/images/${product.image}`} 
-                        alt={product.name} 
-                    />
-                    <div className="product-info-small">Materials, Care and Origin</div>
+                    <div className="image-slider">
+                        <button className="prev-btn" onClick={prevImage}>&#8249;</button>
+                        <img 
+                            className="product-detail-image" 
+                            src={`${images[currentImageIndex]}`} 
+                            alt={product.name} 
+                        />
+                        <button className="next-btn" onClick={nextImage}>&#8250;</button>
+                    </div>
                     <p className="product-detail-materials">
-                        We work with monitoring programs to ensure compliance with our social, environmental and health and safety standards.
+                        We work with monitoring programs to ensure compliance with our social.
                     </p>
                 </div>
 
@@ -110,14 +124,14 @@ const ProductDetailPopup = ({ product, onClose }) => {
                         <div className="button-group">
                             <button 
                                 className="add-to-cart-btn" 
-                                onClick={handleAddToCart} // Use the updated handleAddToCart function
-                                disabled={!selectedSize} // Disable button if no size is selected
+                                onClick={handleAddToCart}
+                                disabled={!selectedSize} 
                             >
                                 Add to Cart
                             </button>
                             <button 
                                 className="view-cart-btn" 
-                                onClick={() => navigate('/cart')} // Redirect to cart page
+                                onClick={() => navigate('/cart')} 
                             >
                                 View Cart
                             </button>

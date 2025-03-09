@@ -1,10 +1,9 @@
 import React from 'react';
 import './ProductItem.css';
-import { assets } from '../../assets/assets';
 
 const ProductItem = ({ id, name, description, price, image, onClick }) => {
     return (
-        <div className='product-item' onClick={() => onClick(id)}>
+        <div className='product-item' onClick={() => onClick(id)}> {/* Ensure ID is passed */}
             <div className="product-item-image-container">
                 <img className='product-item-image' src={image} alt={name} />
             </div>

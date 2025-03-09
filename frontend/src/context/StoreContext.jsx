@@ -28,7 +28,7 @@ const StoreContextProvider = (props) => {
         if (token) {
             try {
                 await axios.post(
-                    `${url}/api/cart/add`,
+                    `${url}/api/cart/add`, 
                     { itemId, size, name: productName },
                     { headers: { Authorization: `Bearer ${token}` } } // Include Bearer prefix if needed
                 );
