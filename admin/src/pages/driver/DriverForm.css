@@ -25,11 +25,13 @@ select {
 
 .form-heading {
   margin-top: 100px;
+  color: #4c2b08;
+  
 }
 
 .AddDriverSidebar {
   width: 250px;
-  background-color: #333;
+  background-color: #4c2b08;
   color: #fff;
   padding: 20px;
   display: flex;
@@ -56,7 +58,7 @@ select {
 }
 
 .AddDriverSidebar ul li a:hover {
-  background-color: #555;
+  background-color: #b8957f;
   text-decoration: underline;
 }
 
@@ -79,7 +81,7 @@ select {
   flex-direction: column;
   width: 100%; /* Ensure it takes full width of its container */
   max-width: 600px; /* Set a maximum width for the form */
-  background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+  background-color: #b8957f; /* White background with transparency */
   padding: 20px; /* Padding inside the form */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -94,6 +96,8 @@ select {
   width: 100%; /* Make the input take full width */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
   transition: border-color 0.3s; /* Transition for border color */
+  background-color: #d7bda6;
+  color: black;
 }
 
 .driver-form input:focus,
@@ -113,19 +117,19 @@ select {
 }
 
 .add-driver-button {
-  background-color: #050505; /* Button color */
+  background-color: #6d3914; /* Button color */
 }
 
 .add-driver-button:hover {
-  background-color: tomato; /* Darker blue on hover */
+  background-color: rgb(90, 234, 90) !important; /* Darker blue on hover */
 }
 
-.cancel-button {
-  background-color: #00000020; /* Red color for cancel button */
+.cancel-button1 {
+  background-color: #6d3914; /* Red color for cancel button */
   margin-top: 5px; /* Space between buttons */
 }
 
-.cancel-button:hover {
+.cancel-button1:hover {
   background-color: tomato; /* Darker red on hover */
 }
 

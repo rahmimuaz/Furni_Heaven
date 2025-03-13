@@ -149,6 +149,7 @@ const SampleComponent = () => {
     if (error) return <div>Error: {error}</div>;
 
     return (
+        
         <div className="app-content">
             
             <h1 className="header1">Delivery Schedule</h1>
@@ -181,17 +182,16 @@ const SampleComponent = () => {
                 </div>
             </div>
 
-            <table>
+            <table style={{ width: '100%', maxWidth: '1200px', borderCollapse: 'collapse', marginBottom: '20px', backgroundColor: '#b8957f', border: '1px solid #4c2b08' }}>
                 <thead>
-                    <tr>
-                        <th>Select</th>
-                        <th>User ID</th>
-                        <th>Items</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                       
-                        <th>Address</th>
-                        <th>Province</th>
+                    <tr style={{ backgroundColor: 'red', color: 'white' }}>
+                        <th style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>Select</th>
+                        <th style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>User ID</th>
+                        <th style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>Items</th>
+                        <th style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>Amount</th>
+                        <th style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>Date</th>
+                        <th style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>Address</th>
+                        <th style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>Province</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -201,15 +201,15 @@ const SampleComponent = () => {
 
                         return (
                             <tr key={_id}>
-                                <td>
+                                <td style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>
                                     <input
                                         type="checkbox"
                                         checked={isChecked}
                                         onChange={() => handleCheckboxChange(_id)}
                                     />
                                 </td>
-                                <td>{userId}</td>
-                                <td>
+                                <td style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>{userId}</td>
+                                <td style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>
                                     <ul>
                                         {items.map((itemObject, index) => {
                                             const itemDetails = Object.values(itemObject)[0]; // Get item details
@@ -221,11 +221,10 @@ const SampleComponent = () => {
                                         })}
                                     </ul>
                                 </td>
-                                <td>${amount}</td>
-                                <td>{new Date(date).toLocaleDateString()}</td>
-                                
-                                <td>{address}</td>
-                                <td>{province}</td>
+                                <td style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>${amount}</td>
+                                <td style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>{new Date(date).toLocaleDateString()}</td>
+                                <td style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>{address}</td>
+                                <td style={{ border: '1px solid #4c2b08', padding: '12px', textAlign: 'left' }}>{province}</td>
                             </tr>
                         );
                     })}
@@ -257,6 +256,7 @@ const SampleComponent = () => {
                 <button className="pdf-btn" onClick={generatePDF}>Download PDF Report</button>
             </div>
         </div>
+        
     );
 };
 
