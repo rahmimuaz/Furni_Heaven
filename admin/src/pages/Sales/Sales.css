@@ -2,52 +2,63 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* Ensures consistent sizing */
-  }
-  
-  /* Body styling */
-  body {
+}
+
+/* Body styling */
+body {
     margin: 0;
     padding: 0;
-  }
+}
 
-  .list-container{
+.list-container {
     width: 100%;
-  display: flex;
-  font-family: Arial, sans-serif;
-  
-  }
+    display: flex;
+    font-family: Arial, sans-serif;
+}
+
 /* Sidebar styling */
 .SalesSidebar {
     width: 250px;
-    background-color: #333;
+    background-color: #3E160C; /* Darker background color for better contrast */
     color: #fff;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  
-  .SalesSidebar ul {
+    position: fixed; /* Fix the sidebar to the left */
+    height: 100vh; /* Full height of the viewport */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.SalesSidebar ul {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .SalesSidebar ul li {
+}
+
+.SalesSidebar ul li {
     margin: 15px 0;
-  }
-  
-  .SalesSidebar ul li a {
+}
+
+.SalesSidebar ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
     display: block;
     padding: 10px;
     border-radius: 4px;
-  }
-  
-  .SalesSidebar ul li a:hover {
+}
+
+.SalesSidebar ul li a:hover {
     background-color: #555;
     text-decoration: underline;
-  }
+}
 
-  
+/* Main content styling */
+.main-content {
+    margin-left: 270px; /* Adjust margin to account for the fixed sidebar width */
+    padding: 20px;
+    width: calc(100% - 270px); /* Adjust width to account for the fixed sidebar width */
+    background-color: #f0f0f0; /* Light background color for contrast */
+}
+
+
