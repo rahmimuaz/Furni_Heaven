@@ -10,65 +10,80 @@ const Cart = () => {
   const totalAmount = getTotalCartAmount();
 
   return (
-    <div className='cart'>
-      <div className="cart-items">
-        <div className="cart-items-title">
-          <p>Items</p>
-          <p>Title</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>Total</p>
-          <p>Add</p>
-          <p>Remove</p>
-        </div>
-        <br />
-        <hr />
-        
+    <div className="cart">
+      <h1 className="cart-title">Your Shopping Cart</h1>
+      <div className="cart-table-container">
         {Object.keys(cartItems).length > 0 ? (
-          Object.keys(cartItems).map((itemId, index) => {
-            const product = featuredProducts.find((item) => item._id === itemId); // Find product by _id
-            const cartItem = cartItems[itemId]; // Access the specific cart item (including quantity and size)
-            if (product) {
-              return (
-                <div key={index}>
-                  <div className="cart-items-title cart-items-item">
-                    <img src={`http://localhost:5001/images/${product.image}`} alt={product.name} />
-                    <p>{product.name}</p>
-                    <p>Rs.{product.retailPrice}</p>
-                    <p>{cartItem.quantity}</p> {/* Display quantity correctly */}
-                    <p>Rs.{product.retailPrice * cartItem.quantity}</p> {/* Calculate total based on quantity */}
-                    <p onClick={() => addToCart(itemId)} className='add'>+</p>
-                    <p onClick={() => removeFromCart(itemId)} className='cross'>x</p>
-                  </div>
-                  <hr />
-                </div>
-              );
-            }
-            return null;
-          })
+          <table className="cart-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Add</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(cartItems).map((itemId, index) => {
+                const product = featuredProducts.find((item) => item._id === itemId); // Find product by _id
+                const cartItem = cartItems[itemId]; // Access the specific cart item (including quantity and size)
+                if (product) {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <img
+                          src={`http://localhost:5001/images/${product.image}`}
+                          alt={product.name}
+                          className="cart-item-image"
+                        />
+                      </td>
+                      <td>{product.name}</td>
+                      <td>Rs.{product.retailPrice}</td>
+                      <td>{cartItem.quantity}</td>
+                      <td>Rs.{product.retailPrice * cartItem.quantity}</td>
+                      <td>
+                        <button onClick={() => addToCart(itemId)} className="cart-action-btn">
+                          +
+                        </button>
+                      </td>
+                      <td>
+                        <button onClick={() => removeFromCart(itemId)} className="cart-action-btn">
+                          x
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                }
+                return null;
+              })}
+            </tbody>
+          </table>
         ) : (
-          <p>No items in the cart.</p>
+          <p className="empty-cart-message">No items in the cart.</p>
         )}
       </div>
 
-      <div className='cart-bottom'>
-        <div className='cart-total'>
+      <div className="cart-bottom">
+        <div className="cart-total">
           <h2>Cart Totals</h2>
           <div>
             <hr />
-            <div className='cart-total-details'>
+            <div className="cart-total-details">
               <p>Subtotal</p>
               <p>Rs.{totalAmount}</p>
             </div>
             <hr />
-            <div className='cart-total-details'>
+            <div className="cart-total-details">
               <b>Total</b>
               <b>Rs.{totalAmount}</b>
             </div>
           </div>
-          <button 
-            onClick={() => navigate('/order')} 
-            disabled={totalAmount === 0} 
+          <button
+            onClick={() => navigate('/order')}
+            disabled={totalAmount === 0}
             className={totalAmount === 0 ? 'disabled' : ''}
           >
             PROCEED TO CHECKOUT
@@ -77,6 +92,6 @@ const Cart = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Cart;
