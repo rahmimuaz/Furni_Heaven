@@ -110,7 +110,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
             Home
           </li>
         </Link>
-        <Link to='/card'>
+        {/* <Link to='/card'>
           <li
             onClick={() => {
               setMenu("card");
@@ -120,7 +120,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           >
             Card
           </li>
-        </Link>
+        </Link> */}
         <Link to='/contact-us'>
           <li
             onClick={() => {
