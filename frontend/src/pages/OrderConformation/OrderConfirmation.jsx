@@ -9,6 +9,9 @@ const OrderConfirmation = () => {
   // Retrieve the order data passed in the state
   const { orderId, orderDetails = {}, totalAmount } = location.state || {}; 
 
+  // Format the orderId to a user-friendly format (e.g., take the last 5 characters or prefix with "OID")
+  const formattedOrderId = orderId ? `OID${String(orderId).slice(-5)}` : '';
+
   // Log the order details to check if they are being passed correctly
   useEffect(() => {
     console.log('Order Details:', orderDetails);  // Check the console for output
@@ -41,7 +44,7 @@ const OrderConfirmation = () => {
       {orderId ? (
         <div>
           <p>Thank you for your order!</p>
-          <p>Your Order ID: <strong>{orderId}</strong></p>
+          <p>Your Order ID: <strong>{formattedOrderId}</strong></p>
 
           <h2>Order Details</h2>
 

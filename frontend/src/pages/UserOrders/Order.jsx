@@ -56,31 +56,46 @@ const UserOrders = () => {
             {orders.length === 0 ? (
                 <p className="no-orders">No orders found.</p>
             ) : (
-                <ul>
-                    {orders.map((order) => (
-                        <div key={order._id} className="order-item">
-                            <p>Order ID: {order._id}</p>
-                            <p>Amount: {order.amount}</p>
-                            <p>Status: {order.status}</p>
-                            <p>Address: {order.address}</p>
-                            <p>Payment Method: {order.paymentMethod}</p>
-                            <h4>Ordered Items:</h4>
-                            {order.items && order.items.length > 0 ? (
-                                <ul className="items-list">
-                                    {order.items.map((cartData, index) => (
-                                        convertCartDataToArray(cartData).map((item, idx) => (
-                                            <li key={`${index}-${idx}`}>
-                                                {item.name} - Quantity: {item.quantity} {item.size ? `(Size: ${item.size})` : "(Size: N/A)"}
-                                            </li>
-                                        ))
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p>No items found for this order.</p>
-                            )}
-                        </div>
-                    ))}
-                </ul>
+                <div className="table-container">
+                    <table className="order-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Address</th>
+                                <th>Payment Method</th>
+                                <th>Ordered Items</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {orders.map((order) => (
+                                <tr key={order._id}>
+                                    <td>{order._id}</td>
+                                    <td>{order.amount}</td>
+                                    <td>{order.status}</td>
+                                    <td>{order.address}</td>
+                                    <td>{order.paymentMethod}</td>
+                                    <td>
+                                        {order.items && order.items.length > 0 ? (
+                                            <ul className="items-list">
+                                                {order.items.map((cartData, index) => (
+                                                    convertCartDataToArray(cartData).map((item, idx) => (
+                                                        <li key={`${index}-${idx}`}>
+                                                            {item.name} - Quantity: {item.quantity} {item.size ? `(Size: ${item.size})` : "(Size: N/A)"}
+                                                        </li>
+                                                    ))
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            <p>No items found for this order.</p>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
         </div>
     );

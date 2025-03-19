@@ -1,19 +1,46 @@
-/* Order container */
-.order-container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
+/* Table container */
+.table-container {
+  max-height: 300px; /* Adjust the height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border-radius: 5px; /* Rounded corners */
+  margin-top: 60px; /* Increase margin to move the table lower */
+  padding: 20px; /* Add padding for better spacing */
+  background-color: #e5c2a7; /* White background for better contrast */
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Order table */
+.order-table {
+  width: 150%; /* Set the width to 100% of the container */
+  max-width: 1000px; /* Set a maximum width for the table */
+  border-collapse: collapse;
+  margin-bottom: 20px; /* Add margin at the bottom for spacing */
+}
+
+.order-table th, .order-table td {
+  padding: 10px; /* Adjust padding for better spacing */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.order-table tr:nth-child(even) {
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Main heading */
 .order-container h2 {
+  margin-top: 60px; /* Increase margin to move the heading down */  
   text-align: center;
   color: #333;
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 30px;
 }
 
 /* Individual order item */
@@ -52,6 +79,12 @@
   padding-left: 0;
 }
 
+.items-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* Individual item in the list */
 .items-list li {
   background-color: #f0f0f0;
@@ -62,6 +95,10 @@
   justify-content: space-between;
   align-items: center; /* Center items vertically */
   transition: background-color 0.3s ease;
+}
+
+.items-list li {
+  margin-bottom: 5px;
 }
 
 /* Hover effect for items in the list */
@@ -80,6 +117,12 @@
   color: #777;
   margin-top: 30px;
   font-size: 18px;
+}
+
+.no-orders {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
 }
 
 /* Responsive design adjustments */
@@ -103,4 +146,13 @@
   .items-list li {
     padding: 8px; /* Smaller padding for list items on mobile */
   }
+
+  .table-container {
+    padding: 10px; /* Adjust padding for mobile */
+  }
+
+  .order-table th, .order-table td {
+    padding: 8px; /* Adjust padding for mobile */
+  }
 }
+
