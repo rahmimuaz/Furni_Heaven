@@ -29,31 +29,26 @@ const ExploreMenu = ({ category, setCategory }) => {
   };
 
   return (
-    <div className="explore-menu-container">
-      {/* Mobile Menu Button, shown only on mobile */}
-      <button 
-        className="menu-button" 
-        onClick={() => setMenuVisible(!menuVisible)}
-      >
-        &#9776; Categories
-      </button>
-
-      {/* Menu Section */}
-      <div className={`explore-menu ${menuVisible ? 'visible' : ''}`} id="explore-menu">
+    <div className='explore-menu' id='explore-menu'>
+        <h1>Explore our Items</h1>
+        <p className='explore-menu-text'>Discover the perfect tools and materials for any project. Explore our vast selection and make your ideas a reality!</p>
         <div className="explore-menu-list">
-          {category_list.map((item, index) => (
-            <div 
-              onClick={() => handleCategoryClick(item.menu_name)} 
-              key={index} 
-              className={`explore-menu-list-item ${category === item.menu_name ? 'active' : ''} ${item.menu_name === 'All' ? 'all-category' : ''}`}
-            >
-              <p>{item.menu_name}</p>
-            </div>
-          ))}
+            {category_list.map((item, index) => {
+                return (
+                    <div 
+                        onClick={() => handleCategoryClick(item.menu_name)} 
+                        key={index} 
+                        className="explore-menu-list-item"
+                    >
+                        <img className={category === item.menu_name ? "active" : ""} src={item.menu_image} alt={item.menu_name} />
+                        <p>{item.menu_name}</p>
+                    </div>
+                );
+            })}
         </div>
-      </div>
+        <hr />
     </div>
   );
-};
+}
 
 export default ExploreMenu;
