@@ -9,7 +9,8 @@ const OrderConfirmation = () => {
   // Retrieve the order data passed in the state
   const { orderId, orderDetails = {}, totalAmount } = location.state || {}; 
 
-
+  // Define formattedOrderId safely
+  const formattedOrderId = orderId ? `#${orderId.toString().padStart(6, '0')}` : 'N/A';
 
   // Log the order details to check if they are being passed correctly
   useEffect(() => {
@@ -17,7 +18,6 @@ const OrderConfirmation = () => {
   }, [orderDetails]);
 
   const renderOrderDetails = () => {
-    // Use Object.keys to iterate over the dynamic keys in orderDetails
     const productKeys = Object.keys(orderDetails);
     
     if (productKeys.length === 0) {
@@ -25,12 +25,12 @@ const OrderConfirmation = () => {
     }
 
     return productKeys.map((key, index) => {
-      const item = orderDetails[key]; // Get the product details using the dynamic key
+      const item = orderDetails[key];
       return (
         <tr key={index}>
           <td>{item.name}</td>
           <td>{item.quantity}</td>
-          <td>{item.size ? `Size: ${item.size}` : ''}</td>
+          <td>{item.size ? `Size: ${item.size}` : 'N/A'}</td>
         </tr>
       );
     });

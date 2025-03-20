@@ -1,13 +1,10 @@
 .footer {
-    background-color: #333;
     color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 10px 8vw; /* Adjust if needed */
-    gap: 20px;
-    padding-top: 80px;
+    padding: 10px 4vw; /* Adjust if needed */
+    padding-top: 20px;
     background-color: #583115;
-    
 }
 
 .footer-container {
@@ -40,10 +37,7 @@
 }
 
 .footer-logo {
-    max-width: 70%;
-    height: auto;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    width: 250px;
 }
 
 .ifooter-section h3 {
@@ -91,3 +85,5 @@
 .social-icon:hover {
     transform: scale(1.1); /* Scale up icon on hover */
 }
+
+

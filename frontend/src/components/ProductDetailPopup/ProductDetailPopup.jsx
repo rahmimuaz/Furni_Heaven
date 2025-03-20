@@ -4,60 +4,31 @@ import './ProductDetailPopup.css';
 import { StoreContext } from '../../context/StoreContext';
 
 const ProductDetailPopup = ({ product, onClose }) => {
+  const navigate = useNavigate();
   const { addToCart } = useContext(StoreContext);
-  const [selectedSize, setSelectedSize] = useState(""); // State to hold the selected size
-  const [updatedPrice, setUpdatedPrice] = useState(product.retailPrice); // State to hold the updated price
-  const [addedQuantity, setAddedQuantity] = useState(0); // Track total quantity added to cart
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State to control success message visibility
-  const navigate = useNavigate(); // Initialize navigate
 
+  // Ensure product exists before using state
   if (!product) return null;
 
-  // Function to get size options based on category
-  const getSizeOptions = (category) => {
-    return category === "Living Room" ? ["White", "Black", "Burgundy", "Gray", "Blush Pink"] : ["Wood", "Metal", "Glass", "Marble", "Rattan"];
-  };
+  const [updatedPrice, setUpdatedPrice] = useState(product.retailPrice || 0);
+  const [addedQuantity, setAddedQuantity] = useState(0);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const sizeOptions = getSizeOptions(product.category);
-
-  // Update price based on selected size
+  // Handle price update if product changes
   useEffect(() => {
-    if (selectedSize) {
-      let newPrice = product.retailPrice;
+    setUpdatedPrice(product.retailPrice || 0);
+  }, [product]);
 
-      // Determine price adjustments based on the selected size
-      if (product.category === "Living Room") {
-        if (selectedSize === "White") {
-          newPrice = product.retailPrice; // Base price for 4l
-        } else if (["Black", "Burgundy"].includes(selectedSize)) {
-          newPrice *= 0.9; // Reduce price by 10%
-        } else if (["Gray", "Blush Pink"].includes(selectedSize)) {
-          newPrice *= 1.1; // Increase price by 10%
-        }
-      } else {
-        // Assuming a similar logic for non-paint categories
-        if (selectedSize === "Wood") {
-          newPrice = product.retailPrice; // Base price for L
-        } else if (["Metal", "Glass"].includes(selectedSize)) {
-          newPrice *= 0.9; // Reduce price by 10%
-        } else if (["Marble", "Rattan"].includes(selectedSize)) {
-          newPrice *= 1.1; // Increase price by 10%
-        }
-      }
-
-      setUpdatedPrice(newPrice); // Update the price state
-    } else {
-      setUpdatedPrice(product.retailPrice); // Reset to base price if no size is selected
-    }
-  }, [selectedSize, product.retailPrice, product.category]);
-
-  // Handle the Add to Cart button click
   const handleAddToCart = () => {
-    const newAddedQuantity = addedQuantity + 1; // Increment quantity with each click
-    setAddedQuantity(newAddedQuantity); // Update the added quantity
-    addToCart(product._id, selectedSize, product.name, newAddedQuantity); // Pass the total accumulated quantity
-    setShowSuccessMessage(true); // Show the success message
-    setTimeout(() => setShowSuccessMessage(false), 2500); // Hide the success message after 2.5 seconds
+    if (product.quantity === 0) return; // Prevent adding out-of-stock items
+
+    const newAddedQuantity = addedQuantity + 1;
+    setAddedQuantity(newAddedQuantity);
+
+    addToCart(product._id, "", product.name, newAddedQuantity);
+    
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 2500);
   };
 
   return (
@@ -86,43 +57,25 @@ const ProductDetailPopup = ({ product, onClose }) => {
           <div className="product-detail-pricing">
             <p className="old-price">Retail Price: LKR {product.retailPrice}</p>
             <p className="updated-price">Updated Price: LKR {updatedPrice.toFixed(2)}</p>
-            <p>Quantity in stock: {product.quantity}</p>
-            <p>Category: {product.category}</p>
+            <p className="qty">Quantity in stock: {product.quantity}</p>
+            <p className="category">Category: {product.category}</p>
           </div>
 
-          {/* Size Selection */}
-          <div className="size-selection">
-            <h3>Select Size:</h3>
-            {sizeOptions.map((size) => (
-              <label key={size}>
-                <input
-                  type="radio"
-                  value={size}
-                  checked={selectedSize === size}
-                  onChange={() => setSelectedSize(size)}
-                />
-                {size}
-              </label>
-            ))}
-          </div>
-
-          {/* Out of Stock Message */}
           {product.quantity === 0 ? (
             <p className="out-of-stock-message">Out of Stock</p>
           ) : (
             <div className="button-group">
-              <button 
-                className="add-to-cart-btn" 
-                onClick={handleAddToCart} // Use the updated handleAddToCart function
-                disabled={!selectedSize} // Disable button if no size is selected
-              >
+              <button className="add-to-cart-btn" onClick={handleAddToCart}>
                 Add to Cart
               </button>
-              <button 
-                className="view-cart-btn" 
-                onClick={() => navigate('/cart')} // Redirect to cart page
-              >
+              <button className="view-cart-btn" onClick={() => navigate('/cart')}>
                 View Cart
+              </button>
+              <button 
+                className="view-details-btn" 
+                onClick={() => product._id && navigate(`/product/${product._id}`)}
+              >
+                View Details
               </button>
             </div>
           )}

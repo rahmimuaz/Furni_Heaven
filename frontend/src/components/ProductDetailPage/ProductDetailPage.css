@@ -1,0 +1,12 @@
+.product-detail-page {
+    text-align: center;
+    padding: 20px;
+}
+
+.product-detail-page img {
+    width: 300px;
+    height: auto;
+    margin: 10px 0;
+}
+
+

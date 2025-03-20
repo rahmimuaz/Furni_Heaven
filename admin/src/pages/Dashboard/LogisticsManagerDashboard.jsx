@@ -45,9 +45,9 @@ function Dashboard() {
       {
         label: 'Number of Orders',
         data: orderData,
-        borderColor: 'tomato', // Line color changed to tomato
-        backgroundColor: 'rgba(255, 99, 71, 0.2)', // Fill color (tomato with transparency)
-        fill: true, // Enable filling under the line
+        borderColor: 'tomato', 
+        backgroundColor: 'rgba(255, 99, 71, 0.2)', 
+        fill: true, 
       },
     ],
   };
