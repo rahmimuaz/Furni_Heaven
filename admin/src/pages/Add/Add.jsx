@@ -150,20 +150,19 @@ const Add = () => {
           </div>
 
           <div className="add-category-price-quantity">
-            <div className="add-category flex-col">
-              <p>Product Category</p>
-              <select name="category" value={data.category} onChange={onChangeHandler} required>
-                <option value="">Select a category</option>
-                <option value="Building and Hardware">Building and Hardware</option>
-                <option value="Safety Gear">Safety Gear</option>
-                <option value="Paint">Paint</option>
-                <option value="Tools">Tools</option>
-                <option value="Storage">Storage</option>
-                <option value="Lighting">Lighting</option>
-                <option value="Gardening">Gardening</option>
-                <option value="Fasteners">Fasteners</option>
-              </select>
-            </div>
+  <div className="add-category flex-col">
+    <p>Product Category</p>
+    <select name="category" value={data.category} onChange={onChangeHandler} required>
+      <option value="">Select a category</option>
+      <option value="Living Room">Living Room</option>
+      <option value="Bed Room">Bed Room</option>
+      <option value="Dining Room">Dining Room</option>
+      <option value="Office">Office</option>
+      <option value="Outdoor">Outdoor</option>
+      <option value="Kitchen">Kitchen</option>
+      <option value="Plastic">Plastic</option>
+    </select>
+  </div>
 
             <div className="add-price flex-col">
               <p>Wholesale Price</p>
