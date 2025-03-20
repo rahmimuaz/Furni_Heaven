@@ -1,15 +1,32 @@
-.container {
-    background-color: #fff;
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full height */
+    background-image: url('/../cardback.jpg'); /* Replace with the actual path to your image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat !important; /* Prevent the image from repeating */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 100px;
-    width: 100%;
-    margin: auto;
+}
+
+
+
+
+
+.container {
+    background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent white background */
+    padding: 30px; /* Add more padding for better spacing */
+    border-radius: 12px; /* Increase border radius for a smoother look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    max-width: 500px; /* Set a maximum width for the box */
+    width: 100%; /* Ensure it takes full width on smaller screens */
+    margin: auto; /* Center the box horizontally */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center; /* Center-align text */
 }
 .page-container {
     display: flex;
@@ -65,6 +82,14 @@ form button:hover {
 /* Specific button names */
 button.add-card-btn {
     background-color: #28a745;
+    width: 50%; /* Automatically adjust width based on content */
+    padding: 10px 20px; /* Add padding for better spacing */
+    font-size: 0.9em; /* Slightly smaller font size */
+    border-radius: 4px; /* Keep smooth corners */
+    text-align: center; /* Center-align text */
+    display: inline-block; /* Ensure proper alignment */
+    margin: 5px; /* Add spacing between buttons */
+    
 }
 
 button.add-card-btn:hover {
@@ -73,6 +98,13 @@ button.add-card-btn:hover {
 
 button.retrieve-card-btn {
     background-color: #17a2b8;
+    width: 50%; /* Automatically adjust width based on content */
+    padding: 10px 20px; /* Add padding for better spacing */
+    font-size: 0.9em; /* Slightly smaller font size */
+    border-radius: 4px; /* Keep smooth corners */
+    text-align: center; /* Center-align text */
+    display: inline-block; /* Ensure proper alignment */
+    margin: 5px; /* Add spacing between buttons */
 }
 
 button.retrieve-card-btn:hover {

@@ -22,8 +22,13 @@ a{
 .app{
   width: 100%;
   margin: auto;
-  background-color: #ffe7ce;
+
+ 
   
+
+  background-color: #e5c2a7;
+  height: 100vh;
+
 
 }
 

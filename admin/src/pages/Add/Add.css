@@ -70,14 +70,14 @@
     max-width: 120px;
     border: none;
     padding: 10px;
-    background-color: black;
+    background-color: #050a30;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .add-btn:hover {
-    background-color: #0056b3;
+    background-color: #785D32 !important;
 }
 
 .dashboard {
@@ -90,13 +90,14 @@
     flex: 1; /* Allow the add-container to take up remaining space */
     padding: 20px; /* Add some padding for aesthetics */
     overflow-y: auto; /* Allow scrolling if content overflows */
+    background-color: #e8d9c4;
 }
 
 
 /* Sidebar styling */
 .PrdAddSidebar {
     width: 250px;
-    background-color: #333;
+    background-color:#3E160C;
     color: #fff;
     padding: 20px;
     display: flex;
@@ -143,4 +144,17 @@
 
 .supplier-dropdown li:hover {
     background-color: #f0f0f0; /* Highlight on hover */
+}
+.signout-btn {
+    max-width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: #3E160C ;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signout-btn:hover {
+    background-color: #785D32 !important;
 }

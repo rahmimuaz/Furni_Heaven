@@ -1,28 +1,38 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 4%;
+    padding: 4px 2%; /* Further reduce padding */
+    background-color: #ad8b72;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
 }
 
-.navbar.logo{
-    width: max(10%,80px);
-
+.navbar .logo {
+    width: max(6%, 50px); /* Further reduce width */
+    height: auto; /* Maintain aspect ratio */
 }
+
 .navbar-right {
     display: flex;
+    flex-direction: column; /* Change to column layout */
     align-items: center;
 }
 
+.noti-icon {
+    width: 40px; /* Increase size for better visibility */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-bottom: 10px; /* Add space between the icon and the button */
+}
 
 .sign-out-button {
-    padding: 8px 16px;
-    background-color: #f44336; /* Red color */
+    padding: 8px 16px; /* Increase padding for better visibility */
+    background-color: #020a30; /* Dark blue color */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 14px; /* Increase font size for better readability */
     transition: background-color 0.3s ease;
 }
 

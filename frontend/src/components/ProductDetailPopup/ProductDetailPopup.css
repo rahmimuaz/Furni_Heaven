@@ -172,3 +172,69 @@
     font-size: 16px;
     font-weight: bold;
 }
+
+.success-message {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white; /* White background */
+    color: #28a745; /* Green text color */
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 2.5s ease-in-out;
+    border: 2px solid #28a745; /* Light green border */
+}
+
+.success-icon-container {
+    background-color: white;
+    border: 2px solid #28a745; /* Light green border */
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.5s ease-in-out;
+}
+
+.success-icon {
+    font-size: 24px;
+    color: #28a745; /* Light green color */
+}
+
+/* Fade In-Out Animation */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -60%); }
+    10% { opacity: 1; transform: translate(-50%, -50%); }
+    90% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -60%); }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* Draw Tick Animation */
+@keyframes drawTick {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 0;
+        height: 24px;
+    }
+    100% {
+        width: 24px;
+        height: 24px;
+    }
+}
+
