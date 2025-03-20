@@ -9,6 +9,8 @@ const OrderConfirmation = () => {
   // Retrieve the order data passed in the state
   const { orderId, orderDetails = {}, totalAmount } = location.state || {}; 
 
+  
+
   // Log the order details to check if they are being passed correctly
   useEffect(() => {
     console.log('Order Details:', orderDetails);  // Check the console for output

@@ -98,7 +98,7 @@ const SampleComponent = () => {
             };
         });
 
-        navigate('/assigned-orders', { state: { assignments } });
+        // navigate('/assigned-orders', { state: { assignments } });
     };
 
     const handleBack = () => {
@@ -154,7 +154,7 @@ const SampleComponent = () => {
             <h1 className="header1">Delivery Schedule</h1>
 
             <div className="controls-container">
-                <div className="sort-bar-container">
+                {/* <div className="sort-bar-container">
                     <label htmlFor="provinceSelect">Sort by Province: </label>
                     <select
                         id="provinceSelect"
@@ -168,9 +168,9 @@ const SampleComponent = () => {
                             </option>
                         ))}
                     </select>
-                </div>
+                </div> */}
 
-                <div className="search-bar-container">
+                {/* <div className="search-bar-container">
                     <input
                         type="text"
                         placeholder="Search by province..."
@@ -178,7 +178,7 @@ const SampleComponent = () => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="search-bar"
                     />
-                </div>
+                </div> */}
             </div>
 
             <table>
@@ -254,7 +254,7 @@ const SampleComponent = () => {
                     Assign to Driver
                 </button>
                 <button className="back-btn" onClick={handleBack}>Back to Dashboard</button>
-                <button className="pdf-btn" onClick={generatePDF}>Download PDF Report</button>
+                {/* <button className="pdf-btn" onClick={generatePDF}>Download PDF Report</button> */}
             </div>
         </div>
     );

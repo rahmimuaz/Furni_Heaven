@@ -33,7 +33,7 @@
 
 /* Add button */
 .btn-add {
-    background-color: #000000;
+    background-color: #123a6b !important;
     height: 45px;
     width: 90px;
     font-size: 22px;
@@ -141,7 +141,7 @@
 
 /* Edit button */
 .btn-edit {
-    background-color: #050505;
+    background-color: #123a6b !important;
     padding: 10px 12px;
     border-radius: 5px;
     color: white;
@@ -183,4 +183,30 @@
 
 .btn-delete:hover {
     background-color: tomato;
+}
+.btn-generate-pdf {
+    background-color: #123a6b !important; /* Green background for the Generate PDF button */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    margin-top: 20px; /* Space above the button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn-toggle-sort {
+    background-color: #123a6b !important; /* Blue background for the Sort button */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn-toggle-sort:hover {
+    background-color: #123a6b ; /* Darker blue on hover */
 }

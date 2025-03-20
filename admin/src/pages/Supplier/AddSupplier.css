@@ -1,14 +1,14 @@
-.product-add-container {
+.add-supplier-container {
   flex: 1; /* Take up the remaining space */
   padding: 20px;
   width: 600px; /* Set a fixed width */
   margin-top: 40px; /* Space from top */
-  background-color: #fff; /* White background for the form */
+  background-color: #ce9777; /* White background for the form */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.product-add-container h2 {
+.add-supplier-container h2 {
   margin-bottom: 20px; /* Space below the heading */
   text-align: center; /* Center the heading */
   font-weight: 700; /* Bold weight for headings */
@@ -41,8 +41,8 @@
   margin-top: 5px; /* Space above error messages */
 }
 
-.submit-btn {
-  background-color: #000000; /* Primary button color */
+.btn-submit {
+  background-color: #123a6b !important; /* Primary button color */
   color: white; /* White text color */
   padding: 10px 15px; /* Padding for button */
   border: none; /* Remove border */
@@ -71,7 +71,7 @@
 /* Sidebar styling */
 .sidebar {
   width: 250px;
-  background-color: #333;
+  background-color: #3e160c;
   color: #fff;
   padding: 20px;
   display: flex;
@@ -98,7 +98,7 @@
 }
 
 .sidebar ul li a:hover {
-  background-color: #555;
+  background-color: #785d32;
   text-decoration: underline;
 }
 

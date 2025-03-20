@@ -12,7 +12,7 @@
   left: 0; /* Align to the left */
   width: 250px; /* Set width for the sidebar */
   height: calc(100% - 114px); /* Full height minus top spacing */
-  background-color: #333; /* Sidebar background color */
+  background-color: #3e160c; /* Sidebar background color */
   color: #fff; /* Sidebar text color */
   padding: 20px; /* Padding for the sidebar */
   display: flex;
@@ -41,7 +41,7 @@
 }
 
 .DriverListSidebar ul li a:hover {
-  background-color: #555; /* Hover effect */
+  background-color: #785d32; /* Hover effect */
   text-decoration: underline; /* Underline on hover */
 }
 
@@ -86,8 +86,8 @@
   transition: background-color 0.3s; /* Smooth background transition */
 }
 
-.delete-button {
-  background-color: tomato; /* Color for delete button */
+.delete-button1 {
+  background-color: tomato !important; /* Color for delete button */
   color: white;
 }
 
@@ -95,13 +95,13 @@
   background-color: #d65f5f; /* Darker color on hover */
 }
 
-.edit-button {
-  background-color: black; /* Color for edit button */
+.edit-button2 {
+  background-color: #123a6b; /* Color for edit button */
   color: white; /* White text */
 }
 
-.edit-button:hover {
-  background-color: #444; /* Darker color on hover */
+.edit-button2:hover {
+  background-color: #785d32 !important; /* Darker color on hover */
 }
 
 /* Modal Styling */

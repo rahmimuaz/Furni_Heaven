@@ -51,10 +51,10 @@ const AdminDashboard = ({ totalOrders }) => { // Accept totalOrders as a prop
           <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
           <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
           <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
-          <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
+          {/* <li className="sidebar-item"><Link to="/orders">Orders</Link></li> */}
           <li className="sidebar-item"><Link to="/users">Users</Link></li>
-          <li className="sidebar-item"><Link to="/sales">Sales</Link></li>
-          <li className="sidebar-item"><Link to="/register"> Register Employee</Link></li>
+          {/* <li className="sidebar-item"><Link to="/sales">Sales</Link></li> */}
+          {/* <li className="sidebar-item"><Link to="/register"> Register Employee</Link></li> */}
           <li className="sidebar-item"><Link to="/acess"> Other Dashboards</Link></li>
         </ul>
       </div>
@@ -91,10 +91,10 @@ const AdminDashboard = ({ totalOrders }) => { // Accept totalOrders as a prop
             <h3>Registered Users</h3>
             <p className="stat-value">{userCount}</p>
           </div>
-          <div className="stat-card"> 
+          {/* <div className="stat-card"> 
             <h3>Number of Employees</h3>
             <p className="stat-value">12</p> 
-          </div>
+          </div> */}
           <div className="stat-card"> {/* New total orders card */}
             <h3>Total Orders</h3>
             <p className="stat-value">9</p>

@@ -1,8 +1,13 @@
 .driver-form-container {
   width: 100%;
   display: flex;
-  height: 88vh;
+  height: 100vh; /* Full height of the viewport */
   font-family: Arial, sans-serif; /* Ensure a clean, modern font */
+  background-image: url('/../ground2.jpg'); /* Replace with the actual path to your image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-attachment: fixed; /* Fix the background image in place */
 }
 
 .error {
@@ -27,9 +32,10 @@ select {
   margin-top: 100px;
 }
 
+/* Sidebar styling */
 .AddDriverSidebar {
   width: 250px;
-  background-color: #333;
+  background-color: #3e160c; /* Semi-transparent black background */
   color: #fff;
   padding: 20px;
   display: flex;
@@ -56,7 +62,7 @@ select {
 }
 
 .AddDriverSidebar ul li a:hover {
-  background-color: #555;
+  background-color: #785d32;
   text-decoration: underline;
 }
 
@@ -70,19 +76,24 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center align the form */
+  justify-content: center; /* Center vertically */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly less transparent white background */
+  border-radius: 12px; /* Increased rounded corners for a modern look */
+  padding: 30px; /* Increased padding for better spacing */
+  width: 90%; /* Adjust width to make it responsive */
+  max-width: 700px; /* Set a maximum width for the form */
+  margin: 10px auto; /* Center the form horizontally and add vertical spacing */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for better depth */
 }
 
 /* Driver form styles */
 .driver-form {
   display: flex;
-  margin-top: 30px; /* Space above the form */
+  margin-top: 10px; /* Space above the form */
   flex-direction: column;
   width: 100%; /* Ensure it takes full width of its container */
   max-width: 600px; /* Set a maximum width for the form */
-  background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
   padding: 20px; /* Padding inside the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .driver-form input,
@@ -113,20 +124,20 @@ select {
 }
 
 .add-driver-button {
-  background-color: #050505; /* Button color */
+  background-color: #123a6b; /* Button color */
 }
 
 .add-driver-button:hover {
-  background-color: tomato; /* Darker blue on hover */
+  background-color: #785d32 !important; /* Darker blue on hover */
 }
 
-.cancel-button {
-  background-color: #00000020; /* Red color for cancel button */
+.cancel-button1 {
+  background-color: #123a6b; /* Red color for cancel button */
   margin-top: 5px; /* Space between buttons */
 }
 
-.cancel-button:hover {
-  background-color: tomato; /* Darker red on hover */
+.cancel-button1:hover {
+  background-color: #785d32 !important; /* Darker red on hover */
 }
 
 /* Responsive design */

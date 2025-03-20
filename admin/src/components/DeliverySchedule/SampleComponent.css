@@ -18,6 +18,8 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    
 }
 
 /* Header Styles */
@@ -70,7 +72,7 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #a46041 !important;
 }
 
 /* Button Styles */
@@ -90,13 +92,13 @@ th {
 }
 
 .back-btn {
-    background-color: #f44336;
+    background-color: #123a6b;
     color: white;
     margin-left: 20px;
 }
 
 .pdf-btn {
-    background-color: #2196F3;
+    background-color: #123a6b;
     color: white;
     margin-left: 20px;
 }

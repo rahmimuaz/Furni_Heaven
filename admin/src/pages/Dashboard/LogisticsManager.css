@@ -23,7 +23,7 @@ body {
 /* Sidebar styling */
 .LogisticSidebar {
   width: 250px;
-  background-color: #333;
+  background-color: #3e160c;
   color: #fff;
   padding: 20px;
   display: flex;
@@ -50,7 +50,7 @@ body {
 }
 
 .LogisticSidebar ul li a:hover {
-  background-color: #555;
+  background-color: #785d32;
   text-decoration: underline;
 }
 
@@ -58,7 +58,7 @@ body {
 .main-content {
   flex-grow: 1; /* Allow it to grow to fill remaining space */
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #e8d9c4;
   overflow: auto; /* Allows scrolling if content overflows */
 }
 
@@ -71,8 +71,8 @@ body {
 }
 
 .stat-box {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #c6896e;
+  border: 2px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   text-align: center;
@@ -83,8 +83,8 @@ body {
 }
 
 .stat-box p {
-  font-size: 14px;
-  color: #777;
+  font-size: 20px;
+  color: #fff;
   margin: 0;
 }
 
