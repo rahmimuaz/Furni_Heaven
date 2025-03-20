@@ -15,6 +15,8 @@ import EditInquiryForm from './components/Inquiry/EditInquiryForm';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import Card from './pages/Card/CardManager'
+import ProductDetailPage from './components/ProductDetailPage/ProductDetailPage';
+
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false); 
@@ -44,6 +46,8 @@ const App = () => {
         <Route path="/contact-us" element={<ContactUsForm />} />
         <Route path="/queries" element={<UserQueries />} />
         <Route path="/edit-inquiry/:id" element={<EditInquiryForm />} /> {/* Ensure correct route here */}
+        <Route path="/product/:id" element={<ProductDetailPage/>} />
+        
       </Routes>
     </div>
   );

@@ -103,7 +103,7 @@
     justify-content: center; /* Center button group */
     gap: 15px;
 }
-
+.view-details-btn,
 .add-to-cart-btn,
 .view-cart-btn {
     background-color: #123a54;
@@ -115,6 +115,7 @@
     transition: background-color 0.3s;
     font-size: 16px;
     font-weight: bold;
+
 }
 
 .add-to-cart-btn:disabled {
