@@ -15,7 +15,7 @@ const ProductDetailPopup = ({ product, onClose }) => {
 
   // Function to get size options based on category
   const getSizeOptions = (category) => {
-    return category === "Paint" ? ["500ml", "1l", "4l", "10l", "20l"] : ["S", "M", "L", "XL", "XXL"];
+    return category === "Living Room" ? ["White", "Black", "Burgundy", "Gray", "Blush Pink"] : ["Wood", "Metal", "Glass", "Marble", "Rattan"];
   };
 
   const sizeOptions = getSizeOptions(product.category);
@@ -26,21 +26,21 @@ const ProductDetailPopup = ({ product, onClose }) => {
       let newPrice = product.retailPrice;
 
       // Determine price adjustments based on the selected size
-      if (product.category === "Paint") {
-        if (selectedSize === "4l") {
+      if (product.category === "Living Room") {
+        if (selectedSize === "White") {
           newPrice = product.retailPrice; // Base price for 4l
-        } else if (["500ml", "1l"].includes(selectedSize)) {
+        } else if (["Black", "Burgundy"].includes(selectedSize)) {
           newPrice *= 0.9; // Reduce price by 10%
-        } else if (["10l", "20l"].includes(selectedSize)) {
+        } else if (["Gray", "Blush Pink"].includes(selectedSize)) {
           newPrice *= 1.1; // Increase price by 10%
         }
       } else {
         // Assuming a similar logic for non-paint categories
-        if (selectedSize === "L") {
+        if (selectedSize === "Wood") {
           newPrice = product.retailPrice; // Base price for L
-        } else if (["S", "M"].includes(selectedSize)) {
+        } else if (["Metal", "Glass"].includes(selectedSize)) {
           newPrice *= 0.9; // Reduce price by 10%
-        } else if (["XL", "XXL"].includes(selectedSize)) {
+        } else if (["Marble", "Rattan"].includes(selectedSize)) {
           newPrice *= 1.1; // Increase price by 10%
         }
       }
