@@ -4,10 +4,13 @@
   margin:0;
   box-sizing: border-box;
   font-family: Arial;
+  
 
 }
 body{
   min-height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden;
 
 }
 a{
@@ -19,8 +22,13 @@ a{
 .app{
   width: 100%;
   margin: auto;
+
+ 
+  
+
   background-color: #e5c2a7;
   height: 100vh;
+
 
 }
 

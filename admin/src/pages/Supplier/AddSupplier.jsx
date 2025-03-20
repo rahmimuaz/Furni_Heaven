@@ -73,7 +73,7 @@ const AddSupplier = () => {
         </ul>
       </div>
       <div className='create-user-container'>
-        <h2>Supplier Management</h2>
+        <h2>Add Supplier</h2>
         <form onSubmit={Submit}>
           <div className='mb-3 text-start'>
             <label htmlFor='name' className='form-label'>Company Name</label>
