@@ -47,8 +47,8 @@ const ProductDetailPopup = ({ product, onClose }) => {
           <div className="product-detail-pricing">
             <p className="old-price">Retail Price: LKR {product.retailPrice}</p>
             <p className="updated-price">Updated Price: LKR {updatedPrice.toFixed(2)}</p>
-            <p>Quantity in stock: {product.quantity}</p>
-            <p>Category: {product.category}</p>
+            <p className='qty'>Quantity in stock: {product.quantity}</p>
+            <p className='category'>Category: {product.category}</p>
           </div>
 
           {/* Out of Stock Message */}

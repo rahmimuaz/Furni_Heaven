@@ -1,20 +1,63 @@
-.product-display{
-    margin-top: 30px;
+/* ProductDisplay.css */
+.product-display {
+    background-color: #e5c2a7;
 }
 
-.product-display h2{
-    font-size: max(2vw 24px);
-    font-weight: 600;
+.product-display h2 {
+    font-size: max(2vw, 24px);
+    font-weight: 600;  
 }
 
-.product-display-list{
-    display:grid;
-    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+.product-display-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Ensures responsive grid */
     margin-top: 30px;
-    gap:30px;
-    row-gap: 50px;
+    gap: 20px;
     margin-left: 50px;
-    padding: 20px 0px;
-    
-  }
-  
+    padding: 20px 0px;  
+}
+
+.product-item {
+    width: 100%;
+    height: 350px; /* Set fixed height for uniform item sizes */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd; /* Optional: add border to product items */
+    border-radius: 10px; /* Optional: rounded corners for product items */
+    background-color: #fff; /* Optional: background color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow effect */
+    overflow: hidden; /* Ensures content doesn't overflow */  
+}
+
+.product-item img {
+    width: 100%; /* Makes image fill the container */
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Ensures images maintain their aspect ratio */
+    border-radius: 8px 8px 0px 0px; /* Optional: rounded corners for images */
+}
+
+.product-item .product-info {
+    flex-grow: 1; /* Ensures name and description space stretches */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;  
+}
+
+.product-item .product-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+.product-item .product-price {
+    font-size: 1rem;
+    color: #000;
+    font-weight: 600;   
+}
+
+.product-display-list p {
+    margin-bottom: 15px;
+    text-align: left;
+}

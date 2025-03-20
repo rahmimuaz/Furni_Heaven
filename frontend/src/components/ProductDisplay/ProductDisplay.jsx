@@ -17,7 +17,7 @@ const ProductDisplay = ({ category, products, scrollToProduct }) => { // Accept 
 
     return (
         <div className='product-display' id='product-display'>
-            <h2>{category} Products</h2>
+            <h2>{category}</h2>
             <div className="product-display-list">
                 {products.length > 0 ? (
                     products.map((item) => (

@@ -5,7 +5,6 @@ import { StoreContext } from '../../context/StoreContext';
 import { Link } from 'react-router-dom';
 import microphone_icon from '../../assets/microphone.png';
 
-
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
@@ -29,51 +28,6 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
     }, 3000);
     setMenu("Home");
   };
-
-  const handleSearchClick = () => {
-    setIsSearching(!isSearching);
-  };
-
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const toggleListening = () => {
-    if (!recognition) {
-      alert('Speech recognition not supported in this browser.');
-      return;
-    }
-
-    if (isListening) {
-      recognition.stop();
-      setIsListening(false);
-      setSearchQuery(""); // Clear the search query
-    } else {
-      recognition.start();
-      setIsListening(true);
-
-      recognition.onresult = (event) => {
-        const voiceInput = event.results[0][0].transcript;
-        setSearchQuery(voiceInput);
-        setIsListening(false);
-      };
-
-      recognition.onspeechend = () => {
-        setIsListening(false);
-        recognition.stop();
-      };
-
-      recognition.onerror = (event) => {
-        console.error(event.error);
-        setIsListening(false);
-      };
-    }
-  };
-
-  const filteredProducts = featuredProducts.filter(product =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   const handleMenuToggle = () => {
     setIsMenuVisible(!isMenuVisible);
@@ -110,17 +64,6 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
             Home
           </li>
         </Link>
-        {/* <Link to='/card'>
-          <li
-            onClick={() => {
-              setMenu("card");
-              handleCloseMenu(); // Close the menu after setting the active menu item
-            }}
-            className={menu === "card" ? "active" : ""}
-          >
-            Card
-          </li>
-        </Link> */}
         <Link to='/contact-us'>
           <li
             onClick={() => {
@@ -135,6 +78,8 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
 
         {/* Right Side Content Inside the Menu for Mobile */}
         <div className='navbar-right'>
+          {/* Commenting out the search part */}
+          {/*
           <img
             src={assets.search_icon}
             alt="Search"
@@ -171,6 +116,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
               ) : null}
             </div>
           </div>
+          */}
           <div className='navbar-search-icon'>
             <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link> 
             <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>

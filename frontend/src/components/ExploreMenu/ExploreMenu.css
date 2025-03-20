@@ -1,12 +1,12 @@
 .explore-menu{
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-left: 50px;
+    background-color: #e5c2a7;
 }
 
 .explore-menu h1{
+    margin-left: 50px;
     color: #262626;
     font-weight: 500;
 
@@ -23,7 +23,7 @@
     align-items: center;
     gap: 10px;
     text-align: center;
-    margin: 20px 10px;
+    margin: 20px 40px;
     overflow-x: scroll;
 }
 
