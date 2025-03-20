@@ -5,7 +5,6 @@ import { StoreContext } from '../../context/StoreContext';
 
 const ProductDetailPopup = ({ product, onClose }) => {
   const { addToCart } = useContext(StoreContext);
-  const [selectedSize, setSelectedSize] = useState(""); // State to hold the selected size
   const [updatedPrice, setUpdatedPrice] = useState(product.retailPrice); // State to hold the updated price
   const [addedQuantity, setAddedQuantity] = useState(0); // Track total quantity added to cart
   const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State to control success message visibility
@@ -13,49 +12,11 @@ const ProductDetailPopup = ({ product, onClose }) => {
 
   if (!product) return null;
 
-  // Function to get size options based on category
-  const getSizeOptions = (category) => {
-    return category === "Living Room" ? ["White", "Black", "Burgundy", "Gray", "Blush Pink"] : ["Wood", "Metal", "Glass", "Marble", "Rattan"];
-  };
-
-  const sizeOptions = getSizeOptions(product.category);
-
-  // Update price based on selected size
-  useEffect(() => {
-    if (selectedSize) {
-      let newPrice = product.retailPrice;
-
-      // Determine price adjustments based on the selected size
-      if (product.category === "Living Room") {
-        if (selectedSize === "White") {
-          newPrice = product.retailPrice; // Base price for 4l
-        } else if (["Black", "Burgundy"].includes(selectedSize)) {
-          newPrice *= 0.9; // Reduce price by 10%
-        } else if (["Gray", "Blush Pink"].includes(selectedSize)) {
-          newPrice *= 1.1; // Increase price by 10%
-        }
-      } else {
-        // Assuming a similar logic for non-paint categories
-        if (selectedSize === "Wood") {
-          newPrice = product.retailPrice; // Base price for L
-        } else if (["Metal", "Glass"].includes(selectedSize)) {
-          newPrice *= 0.9; // Reduce price by 10%
-        } else if (["Marble", "Rattan"].includes(selectedSize)) {
-          newPrice *= 1.1; // Increase price by 10%
-        }
-      }
-
-      setUpdatedPrice(newPrice); // Update the price state
-    } else {
-      setUpdatedPrice(product.retailPrice); // Reset to base price if no size is selected
-    }
-  }, [selectedSize, product.retailPrice, product.category]);
-
   // Handle the Add to Cart button click
   const handleAddToCart = () => {
     const newAddedQuantity = addedQuantity + 1; // Increment quantity with each click
     setAddedQuantity(newAddedQuantity); // Update the added quantity
-    addToCart(product._id, selectedSize, product.name, newAddedQuantity); // Pass the total accumulated quantity
+    addToCart(product._id, "", product.name, newAddedQuantity); // Pass empty string for size
     setShowSuccessMessage(true); // Show the success message
     setTimeout(() => setShowSuccessMessage(false), 2500); // Hide the success message after 2.5 seconds
   };
@@ -90,22 +51,6 @@ const ProductDetailPopup = ({ product, onClose }) => {
             <p>Category: {product.category}</p>
           </div>
 
-          {/* Size Selection */}
-          <div className="size-selection">
-            <h3>Select Size:</h3>
-            {sizeOptions.map((size) => (
-              <label key={size}>
-                <input
-                  type="radio"
-                  value={size}
-                  checked={selectedSize === size}
-                  onChange={() => setSelectedSize(size)}
-                />
-                {size}
-              </label>
-            ))}
-          </div>
-
           {/* Out of Stock Message */}
           {product.quantity === 0 ? (
             <p className="out-of-stock-message">Out of Stock</p>
@@ -114,7 +59,6 @@ const ProductDetailPopup = ({ product, onClose }) => {
               <button 
                 className="add-to-cart-btn" 
                 onClick={handleAddToCart} // Use the updated handleAddToCart function
-                disabled={!selectedSize} // Disable button if no size is selected
               >
                 Add to Cart
               </button>
