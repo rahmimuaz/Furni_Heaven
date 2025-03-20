@@ -11,8 +11,6 @@ const StoreContextProvider = (props) => {
     
     const url = "http://localhost:5001"; // Replace with your actual backend URL
 
-
-    
     // Add item to cart
     const addToCart = async (itemId, size, productName) => {
         setCartItems((prev) => {
@@ -22,6 +20,9 @@ const StoreContextProvider = (props) => {
             } else {
                 updatedCart[itemId].quantity += 1;
             }
+
+            // Save updated cart to localStorage
+            localStorage.setItem("cartItems", JSON.stringify(updatedCart));
             return updatedCart;
         });
 
@@ -30,7 +31,7 @@ const StoreContextProvider = (props) => {
                 await axios.post(
                     `${url}/api/cart/add`,
                     { itemId, size, name: productName },
-                    { headers: { Authorization: `Bearer ${token}` } } // Include Bearer prefix if needed
+                    { headers: { Authorization: `Bearer ${token}` } }
                 );
             } catch (error) {
                 console.error("Error adding item to cart:", error);
@@ -39,8 +40,8 @@ const StoreContextProvider = (props) => {
     };
 
     const clearCart = () => {
-        // Logic to clear the cart, e.g., resetting state or local storage
-        localStorage.removeItem("cartItems"); // Example for clearing local storage
+        setCartItems({});
+        localStorage.removeItem("cartItems"); // Clear from localStorage as well
     };
     
     // Remove item from cart
@@ -54,12 +55,15 @@ const StoreContextProvider = (props) => {
                     delete updatedCart[itemId];
                 }
             }
+
+            // Save updated cart to localStorage
+            localStorage.setItem("cartItems", JSON.stringify(updatedCart));
             return updatedCart;
         });
 
         if (token) {
             try {
-                await axios.post(`${url}/api/cart/remove`, { itemId }, { headers: { token } });
+                await axios.post(`${url}/api/cart/remove`, { itemId }, { headers: { Authorization: `Bearer ${token}` } });
             } catch (error) {
                 console.error("Error removing item from cart:", error);
             }
@@ -87,7 +91,6 @@ const StoreContextProvider = (props) => {
             console.error("Error loading cart data:", error);
         }
     };
-    
 
     // Get the total cart amount
     const getTotalCartAmount = () => {
@@ -102,9 +105,7 @@ const StoreContextProvider = (props) => {
         }, 0);
     };
 
-
-    //getting orders placed by the particular user who is logged in 
-  
+    // Fetch user orders
     const fetchUserOrders = async () => {
         if (!token) return; 
     
@@ -114,7 +115,7 @@ const StoreContextProvider = (props) => {
                 headers: { Authorization: `Bearer ${token}` },
             });
     
-            console.log("Response:", response); // Log the full response for debugging
+            console.log("Response:", response);
             console.log("Orders fetched:", response.data.orders);
             return response.data.orders;
         } catch (error) {
@@ -122,9 +123,6 @@ const StoreContextProvider = (props) => {
             return []; // Return an empty array on error
         }
     };
-    
-    
-
 
     // Load the token, userId, and cart data when the component mounts
     useEffect(() => {
@@ -133,6 +131,12 @@ const StoreContextProvider = (props) => {
             if (savedToken) {
                 setToken(savedToken);
                 await loadCartData(savedToken); // Load cart data for the user
+            }
+
+            // Load cart data from localStorage
+            const savedCart = localStorage.getItem("cartItems");
+            if (savedCart) {
+                setCartItems(JSON.parse(savedCart));
             }
 
             await fetchProductList(); // Fetch the product list
@@ -166,7 +170,6 @@ const StoreContextProvider = (props) => {
         getTotalCartAmount,
     };
 
-    
     return (
         <StoreContext.Provider value={contextValue}>
             {props.children}

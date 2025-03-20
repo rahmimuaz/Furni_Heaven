@@ -20,6 +20,14 @@ const Home = () => {
         }
     };
 
+    // Function to scroll to a specific product
+    const scrollToProduct = (productId) => {
+        const productElement = document.getElementById(productId);
+        if (productElement) {
+            productElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
+
     // Filter products based on the selected category
     const filteredProducts = category === "All Products"
         ? featuredProducts
@@ -27,12 +35,10 @@ const Home = () => {
 
     return (
         <div className="home">
-            
             <Header scrollToProducts={scrollToProducts} />
-            <div ref={productRef}> {/* Attach the ref here */}
-            <ExploreMenu category={category} setCategory={setCategory} />
-                <ProductDisplay category={category} products={filteredProducts} />
-                
+            <div ref={productRef}>
+                <ExploreMenu category={category} setCategory={setCategory} />
+                <ProductDisplay category={category} products={filteredProducts} scrollToProduct={scrollToProduct} />
             </div>
             <Footer />
         </div>
