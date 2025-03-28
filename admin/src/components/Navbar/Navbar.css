@@ -2,13 +2,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 2%; /* Further reduce padding */
+    padding: 4px 2px; /* Further reduce padding */
     background-color: #ad8b72;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
 }
 
 .navbar .logo {
-    width: max(6%, 50px); /* Further reduce width */
+    width: max(3.5%, 50px); /* Further reduce width */
     height: auto; /* Maintain aspect ratio */
 }
 

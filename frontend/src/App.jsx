@@ -16,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Card from './pages/Card/CardManager'
 import ProductDetailPage from './components/ProductDetailPage/ProductDetailPage';
+import AiDesign from './pages/aidesign/aidesign';
 
 
 const App = () => {
@@ -47,7 +48,7 @@ const App = () => {
         <Route path="/queries" element={<UserQueries />} />
         <Route path="/edit-inquiry/:id" element={<EditInquiryForm />} /> {/* Ensure correct route here */}
         <Route path="/product/:id" element={<ProductDetailPage/>} />
-        
+        <Route path="/design" element={<AiDesign />} />
       </Routes>
     </div>
   );
