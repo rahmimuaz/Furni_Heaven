@@ -37,7 +37,7 @@ const Home = () => {
         <div className="home">
             <Header scrollToProducts={scrollToProducts} />
             <div ref={productRef}>
-                <ExploreMenu category={category} setCategory={setCategory} />
+                {/* <ExploreMenu category={category} setCategory={setCategory} /> */}
                 <ProductDisplay category={category} products={filteredProducts} scrollToProduct={scrollToProduct} />
             </div>
             <Footer />

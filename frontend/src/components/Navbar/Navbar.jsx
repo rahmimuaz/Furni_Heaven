@@ -34,7 +34,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
   };
 
   const handleCloseMenu = () => {
-    setIsMenuVisible(false); // Close menu when the close button is clicked
+    setIsMenuVisible(false);
   };
 
   return (
@@ -57,7 +57,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           <li
             onClick={() => {
               setMenu("Home");
-              handleCloseMenu(); // Close the menu after setting the active menu item
+              handleCloseMenu();
             }}
             className={menu === "Home" ? "active" : ""}
           >
@@ -68,7 +68,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           <li
             onClick={() => {
               setMenu("Contact Us");
-              handleCloseMenu(); // Close the menu after setting the active menu item
+              handleCloseMenu();
             }}
             className={menu === "Contact Us" ? "active" : ""}
           >
@@ -76,47 +76,21 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           </li>
         </Link>
 
+        {/* New Design Button */}
+        <Link to='/design'>
+          <li
+            onClick={() => {
+              setMenu("Design");
+              handleCloseMenu();
+            }}
+            className={menu === "Design" ? "active" : ""}
+          >
+            Design
+          </li>
+        </Link>
+
         {/* Right Side Content Inside the Menu for Mobile */}
         <div className='navbar-right'>
-          {/* Commenting out the search part */}
-          {/*
-          <img
-            src={assets.search_icon}
-            alt="Search"
-            onClick={handleSearchClick}
-            className='search-icon'
-          />
-          <div className={`navbar-search ${isSearching ? 'show' : ''}`}>
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-            <button onClick={toggleListening} className='voice-search-btn'>
-              <img src={microphone_icon} alt="Voice Search" />
-            </button>
-            {isListening && <p>Listening...</p>}
-            <div className='search-results'>
-              {searchQuery && filteredProducts.length > 0 ? (
-                <ul>
-                  {filteredProducts.map(product => (
-                    <li key={product._id} className='search-result-item' onClick={() => {
-                      scrollToProduct(product._id); // Use scrollToProduct to scroll to the product
-                    }}>
-                      <img src={`http://localhost:5001/images/${product.image}`} alt={product.name} className='search-result-image' />
-                      <div>
-                        <h4>{product.name}</h4>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : searchQuery ? (
-                <p>No products found.</p>
-              ) : null}
-            </div>
-          </div>
-          */}
           <div className='navbar-search-icon'>
             <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link> 
             <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
