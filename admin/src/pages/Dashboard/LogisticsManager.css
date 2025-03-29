@@ -1,11 +1,10 @@
-/* Resetting margins and padding for all elements */
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Ensures consistent sizing */
+  box-sizing: border-box;
 }
 
-/* Body styling */
 body {
   margin: 0;
   padding: 0;

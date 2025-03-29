@@ -1,126 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
-}
-
-html, body {
-    height: 100%;
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
     margin: 0;
     padding: 0;
-    background-color: #fcfcfc;
 }
 
-.app-content {
+/* Sidebar Styles */
+.LogisticSidebar {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #3e160c;
+    color: white;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
-    
 }
 
-/* Header Styles */
-h1 {
+.LogisticSidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.LogisticSidebar li {
+    margin: 15px 0;
+}
+
+.LogisticSidebar li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.LogisticSidebar li a:hover {
+    background-color: #34495e;
+}
+
+/* Main Content */
+.sample {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.header1 {
+    font-size: 2rem;
     color: #333;
-    text-align: center;
     margin-bottom: 20px;
-}
-
-/* Controls Container */
-.controls-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 20px;
-}
-
-/* Sort Bar Container */
-.sort-bar-container {
-    display: flex;
-    align-items: center;
-}
-
-/* Search Bar Container */
-.search-bar-container {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar {
-    width: 250px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
 }
 
 /* Table Styles */
 table {
     width: 100%;
-    max-width: 1200px;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
+    padding: 10px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #a46041 !important;
-}
-
-/* Button Styles */
-.assign-driver-btn,
-.back-btn,
-.pdf-btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.assign-driver-btn {
-    background-color: #4CAF50;
+    background-color: #2c3e50;
     color: white;
-    margin-left: 20px;
+    font-size: 18px;
 }
 
-.back-btn {
-    background-color: #123a6b;
-    color: white;
-    margin-left: 20px;
+tr:hover {
+    background-color: #f1f1f1;
 }
 
-.pdf-btn {
-    background-color: #123a6b;
-    color: white;
-    margin-left: 20px;
+input[type="checkbox"] {
+    margin: 0;
 }
 
+/* Assign Driver Section */
 .assign-driver-container {
     display: flex;
+    flex-direction: column;
+    max-width: 300px;
     margin-top: 20px;
 }
 
-/* Responsive Table */
+.assign-driver-container select {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.assign-driver-container button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.assign-driver-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.assign-driver-btn:hover {
+    background-color: #2980b9;
+}
+
+.back-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.back-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Input and Select Field Styles */
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* Loading and Error Styles */
+.loading, .error {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 50px;
+}
+
+.error {
+    color: red;
+}
+
+.loading {
+    color: green;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    th, td {
-        font-size: 12px;
-        padding: 8px;
+    .LogisticSidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
     }
 
-    .search-bar {
-        width: 100px;
+    .sample {
+        margin-left: 0;
     }
 
-    .controls-container {
-        flex-direction: column;
-        align-items: flex-start;
+    .assign-driver-container {
+        width: 100%;
     }
 }
