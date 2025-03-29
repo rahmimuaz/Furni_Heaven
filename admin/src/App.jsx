@@ -48,7 +48,7 @@ const App = () => {
       <hr />
       <div className="app-content">
         <Routes>
-          <Route path="/" element={<EmployeeLogin />} />
+          <Route path="/" element={<DashboardAcess />} />
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
           <Route path="/orders" element={<Orders />} />
