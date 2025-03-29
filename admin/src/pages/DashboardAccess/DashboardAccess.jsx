@@ -9,7 +9,7 @@ const Access = () => {
       <div className="transparent-box">
       <h1 className="dash-message">Furni Heaven Employee Access</h1>
         <div className="dbutton-container">
-          <Link to="/logistics">
+          <Link to="/sample">
             <button className="dnav-button">Logistic Manager</button>
           </Link>
           
