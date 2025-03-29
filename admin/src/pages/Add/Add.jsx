@@ -113,15 +113,12 @@ const Add = () => {
     <div className="dashboard">
       <div className="PrdAddSidebar">
         <ul className="sidebar-list">
-        <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
-          <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
-          <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
-          {/* <li className="sidebar-item"><Link to="/orders">Orders</Link></li> */}
-          <li className="sidebar-item"><Link to="/users">Users</Link></li>
-          {/* <li className="sidebar-item"><Link to="/sales">Sales</Link></li> */}
-          {/* <li className="sidebar-item"><Link to="/register"> Register Employee</Link></li> */}
-          <li className="sidebar-item"><Link to="/acess"> Other Dashboards</Link></li>
-        </ul>
+       {/* <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li> */} 
+                <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
+                <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
+                <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
+               {/* <li className="sidebar-item"><Link to="/acess"> Other Dashboards</Link></li> */} 
+              </ul>
       </div>
       
       <div className="add-container">
