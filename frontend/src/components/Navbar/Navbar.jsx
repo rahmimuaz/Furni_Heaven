@@ -64,19 +64,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
             Home
           </li>
         </Link>
-        <Link to='/contact-us'>
-          <li
-            onClick={() => {
-              setMenu("Contact Us");
-              handleCloseMenu();
-            }}
-            className={menu === "Contact Us" ? "active" : ""}
-          >
-            Contact Us
-          </li>
-        </Link>
-
-        {/* New Design Button */}
+        
         <Link to='/design'>
           <li
             onClick={() => {
