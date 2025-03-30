@@ -85,13 +85,13 @@ const SupplierList = () => {
                     <li><Link to="/logistics">Dashboard</Link></li>
                     <li><Link to="/addSupplier">Add Supplier</Link></li>
                     <li><Link to="/listSupplier">List Supplier</Link></li>
-                    <li><Link to="/sup">Low Stock Products</Link></li>
+                    {/* <li><Link to="/sup">Low Stock Products</Link></li> */}
                 </ul>
             </div>
             <div className="suppliers-content">
                 <div className="suppliers-header">
                     <Link to="/addSupplier" className="btn btn-add">Add</Link>
-                    <form className="form-search">
+                    {/* <form className="form-search">
                         <input 
                             type="text" 
                             placeholder="Search..." 
@@ -99,8 +99,8 @@ const SupplierList = () => {
                             onChange={handleSearchChange} 
                             className="form-control"
                         />
-                    </form>
-                    <div className="filter-wrapper">
+                    </form> */}
+                    {/* <div className="filter-wrapper">
                         <select onChange={(e) => {
                             setSortField(e.target.value);
                             handleSort(e.target.value);
@@ -112,7 +112,7 @@ const SupplierList = () => {
                         <button onClick={toggleSortOrder} className="btn btn-toggle-sort">
                             {sortOrder === 'asc' ? 'Sort Descending' : 'Sort Ascending'}
                         </button>
-                    </div>
+                    </div> */}
                 </div>
                 {message && <div className="alert alert-success">{message}</div>}
                 {filteredSuppliers.length === 0 && <div className="alert alert-warning">No suppliers found based on your search criteria.</div>}
