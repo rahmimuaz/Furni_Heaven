@@ -165,7 +165,7 @@ const SampleComponent = () => {
                 <button className="assign-driver-btn" onClick={handleAssignDrivers} disabled={selectedOrders.size === 0}>
                     Assign to Driver
                 </button>
-                <button className="back-btn" onClick={handleBack}>Back to Dashboard</button>
+                {/* <button className="back-btn" onClick={handleBack}>Back to Dashboard</button> */}
             </div>
         </div>
     );
