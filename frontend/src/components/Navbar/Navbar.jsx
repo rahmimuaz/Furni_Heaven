@@ -10,13 +10,12 @@ const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
 const Navbar = ({ setShowLogin, scrollToProduct }) => {
   const [menu, setMenu] = useState("Home");
-  const { token, setToken, featuredProducts } = useContext(StoreContext);
+  const { token, setToken, featuredProducts, getTotalCartAmount } = useContext(StoreContext);
   const [showPopup, setShowPopup] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
-  const { getTotalCartAmount } = useContext(StoreContext);
   const [isListening, setIsListening] = useState(false);
-  const [isMenuVisible, setIsMenuVisible] = useState(false); // For mobile menu toggle
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const logout = () => {
     setToken(null);
@@ -37,6 +36,51 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
     setIsMenuVisible(false);
   };
 
+  const handleSearchClick = () => {
+    setIsSearching(!isSearching);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const toggleListening = () => {
+    if (!recognition) {
+      alert('Speech recognition not supported in this browser.');
+      return;
+    }
+
+    if (isListening) {
+      recognition.stop();
+      setIsListening(false);
+      setSearchQuery("");
+    } else {
+      recognition.start();
+      setIsListening(true);
+
+      recognition.onresult = (event) => {
+        const voiceInput = event.results[0][0].transcript;
+        setSearchQuery(voiceInput);
+        setIsListening(false);
+      };
+
+      recognition.onspeechend = () => {
+        setIsListening(false);
+        recognition.stop();
+      };
+
+      recognition.onerror = (event) => {
+        console.error(event.error);
+        setIsListening(false);
+      };
+    }
+  };
+
+  const filteredProducts = featuredProducts.filter(product =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    product.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className='navbar'>
       <img src='./logo.png' alt="" />
@@ -53,6 +97,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           ×
         </button>
 
+        {/* Menu Links */}
         <Link to='./'>
           <li
             onClick={() => {
@@ -64,7 +109,7 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
             Home
           </li>
         </Link>
-        
+
         <Link to='/design'>
           <li
             onClick={() => {
@@ -77,12 +122,70 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           </li>
         </Link>
 
-        {/* Right Side Content Inside the Menu for Mobile */}
+        <Link to='/card'>
+          <li
+            onClick={() => {
+              setMenu("Card");
+              handleCloseMenu();
+            }}
+            className={menu === "Card" ? "active" : ""}
+          >
+            Card
+          </li>
+        </Link>
+
+        {/* Right Side Content */}
         <div className='navbar-right'>
+
+          {/* Search Section */}
+          <img
+            src={assets.search_icon}
+            alt="Search"
+            onClick={handleSearchClick}
+            className='search-icon'
+          />
+
+          <div className={`navbar-search ${isSearching ? 'show' : ''}`}>
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <button onClick={toggleListening} className='voice-search-btn'>
+              <img src={microphone_icon} alt="Voice Search" />
+            </button>
+            {isListening && <p>Listening...</p>}
+
+            <div className='search-results'>
+              {searchQuery && filteredProducts.length > 0 ? (
+                <ul>
+                  {filteredProducts.map(product => (
+                    <li key={product._id} className='search-result-item' onClick={() => {
+                      scrollToProduct(product._id);
+                      setIsSearching(false); // Optional: close search after selection
+                      setSearchQuery("");
+                    }}>
+                      <img src={`http://localhost:5001/images/${product.image}`} alt={product.name} className='search-result-image' />
+                      <div>
+                        <h4>{product.name}</h4>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ) : searchQuery ? (
+                <p>No products found.</p>
+              ) : null}
+            </div>
+          </div>
+
+          {/* Cart Icon */}
           <div className='navbar-search-icon'>
             <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link> 
             <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
           </div>
+
+          {/* Sign In / Profile */}
           {!token ? (
             <button onClick={() => setShowLogin(true)}>Sign in</button>
           ) : (
@@ -96,19 +199,22 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
                   </Link>
                 </li>
                 <hr />
-                <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+                <li onClick={logout}>
+                  <img src={assets.logout_icon} alt="" />
+                  <p>Logout</p>
+                </li>
               </ul>
             </div>
           )}
         </div>
       </ul>
 
+      {/* Logout Popup */}
       {showPopup && (
         <div className="logout-popup">
           <p>You've been logged out.</p>
         </div>
       )}
-      
     </div>
   );
 };
