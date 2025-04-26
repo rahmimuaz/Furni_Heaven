@@ -66,14 +66,14 @@ const AddSupplier = () => {
     <div className='add-supplier-container'>
       <div className="DriverListSidebar">
         <ul>
-          <li><Link to="/sample">Dashboard</Link></li>
+          <li><Link to="/logistics">Dashboard</Link></li>
           <li><Link to="/addSupplier">Add Supplier</Link></li>
           <li><Link to="/listSupplier">List Supplier</Link></li>
           <li><Link to="/sup">Low Stock Products</Link></li>
         </ul>
       </div>
       <div className='create-user-container'>
-        <h2>Add Supplier</h2>
+        <h2>Supplier Management</h2>
         <form onSubmit={Submit}>
           <div className='mb-3 text-start'>
             <label htmlFor='name' className='form-label'>Company Name</label>

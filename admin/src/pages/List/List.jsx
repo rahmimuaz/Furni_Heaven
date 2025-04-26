@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import UpdateModal from './UpdateModal';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import Papa from 'papaparse';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './List.css';
@@ -68,20 +71,33 @@ const List = () => {
                 confirmAlert({
                   title: 'Deleted',
                   message: 'Product removed successfully!',
-                  buttons: [{ label: 'OK', onClick: () => fetchProducts() }]
+                  buttons: [
+                    {
+                      label: 'OK',
+                      onClick: () => fetchProducts() // Refresh products after deletion
+                    }
+                  ]
                 });
               } else {
                 confirmAlert({
                   title: 'Error',
                   message: 'Error removing product.',
-                  buttons: [{ label: 'OK' }]
+                  buttons: [
+                    {
+                      label: 'OK',
+                    }
+                  ]
                 });
               }
             } catch (error) {
               confirmAlert({
                 title: 'Network Error',
                 message: 'There was an issue with the network.',
-                buttons: [{ label: 'OK' }]
+                buttons: [
+                  {
+                    label: 'OK',
+                  }
+                ]
               });
               console.error("Error removing product:", error);
             }
@@ -94,6 +110,47 @@ const List = () => {
       ]
     });
   };
+  
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.text("Product List by Supplier", 14, 16);
+    const filteredBySupplier = products.filter(product => product.supplierName === selectedSupplier);
+    
+    autoTable(doc, {
+      head: [['Name', 'Description', 'Wholesale Price', 'Retail Price', 'Quantity', 'Category', 'Date']],
+      body: filteredBySupplier.map(product => [
+        product.name,
+        product.description,
+        product.wholesalePrice,
+        product.retailPrice,
+        product.quantity,
+        product.category,
+        new Date(product.date).toLocaleDateString()
+      ])
+    });
+
+    if (filteredBySupplier.length > 0) {
+      doc.save(`${selectedSupplier}-product-list.pdf`);
+    } else {
+      toast.error("No products found for the selected supplier");
+    }
+  };
+
+  const generateCSV = () => {
+    const csv = Papa.unparse(products, {
+      fields: ['name', 'description', 'wholesalePrice', 'retailPrice', 'quantity', 'category', 'supplierName', 'date']
+    });
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'product-list.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -104,9 +161,11 @@ const List = () => {
     <div className="main-container">
       <div className="SalesSidebar">
         <ul className="sidebar-list">
+        <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
           <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
           <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
-          {/*<li className="sidebar-item"><Link to="/orders">Orders</Link></li>*/}
+          <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
+          <li className="sidebar-item"><Link to="/users">Users</Link></li>
         </ul>
       </div>
       
@@ -161,11 +220,10 @@ const List = () => {
           </select>
         </div>
 
-        {/* Report generation buttons commented out */}
-        {/* <div className="actions">
+        <div className="actions">
           <button onClick={generatePDF}>Download PDF</button>
           <button onClick={generateCSV}>Download CSV</button>
-        </div> */}
+        </div>
 
         <table>
           <thead>
@@ -188,7 +246,14 @@ const List = () => {
                 <td>{product.description}</td>
                 <td>{product.wholesalePrice}</td>
                 <td>{product.retailPrice}</td>
-                <td>{product.quantity}</td>
+                <td>
+                  {product.quantity}
+                  {product.quantity <= 5 && (
+                    <div className="low-stock-container">
+                      <span className="low-stock-message">Low Stock</span>
+                    </div>
+                  )}
+                </td>
                 <td>{product.category}</td>
                 <td>{product.supplierName}</td>
                 <td>{new Date(product.date).toLocaleDateString()}</td>
@@ -201,7 +266,13 @@ const List = () => {
           </tbody>
         </table>
 
-        <UpdateModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} product={selectedProduct} onUpdate={handleUpdate} />
+        {/* Update Modal */}
+        <UpdateModal 
+          isOpen={isModalOpen} 
+          onRequestClose={() => setIsModalOpen(false)} 
+          product={selectedProduct} 
+          onUpdate={handleUpdate} 
+        />
       </div>
     </div>
   );
