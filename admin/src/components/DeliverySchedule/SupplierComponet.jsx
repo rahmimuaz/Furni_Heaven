@@ -75,7 +75,7 @@ const SupplierComponent = () => {
     <div className="app-content">
       <div className="DriverListSidebar">
         <ul>
-          <li><Link to="/logistics">Dashboard</Link></li>
+          <li><Link to="/sample">Dashboard</Link></li>
           <li><Link to="/addSupplier">Add Supplier</Link></li>
           <li><Link to="/listSupplier">List Supplier</Link></li>
           <li><Link to="/low-stock">Low Stock Products</Link></li>

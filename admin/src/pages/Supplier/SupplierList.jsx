@@ -82,7 +82,7 @@ const SupplierList = () => {
         <div className="dashboard">
             <div className="SupplierSidebar">
                 <ul>
-                    <li><Link to="/logistics">Dashboard</Link></li>
+                    <li><Link to="/sample">Dashboard</Link></li>
                     <li><Link to="/addSupplier">Add Supplier</Link></li>
                     <li><Link to="/listSupplier">List Supplier</Link></li>
                     {/* <li><Link to="/sup">Low Stock Products</Link></li> */}
@@ -141,7 +141,7 @@ const SupplierList = () => {
                         ))}
                     </tbody>
                 </table>
-                <button onClick={generatePDF} className="btn btn-generate-pdf">Generate PDF</button>
+               {/* <button onClick={generatePDF} className="btn btn-generate-pdf">Generate PDF</button> */}
             </div>
         </div>
     );
