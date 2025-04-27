@@ -16,6 +16,13 @@ import ProductDetailPage from './components/ProductDetailPage/ProductDetailPage'
 import AiDesign from './pages/aidesign/aidesign';
 
 
+import Ai_Home from './Ai_feature/Ai_Home';
+import Ai_Dashboard from './Ai_feature/Ai_Dashboard';
+import DesignStudio from './Ai_feature/DesignStudio';
+import AiDesignStudio from './Ai_feature/AiDesignStudio';
+import ScratchDesignStudio from './Ai_feature/ScratchDesignStudio';
+
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(false); 
   const { token, setToken } = useContext(StoreContext);
@@ -43,6 +50,12 @@ const App = () => {
         <Route path='/login' element={<LoginPopup setShowLogin={setShowLogin} />} />
         <Route path="/product/:id" element={<ProductDetailPage/>} />
         <Route path="/design" element={<AiDesign />} />
+
+        <Route path="/ai_home" element={<Ai_Home />} />
+          <Route path="/dashboard" element={<Ai_Dashboard />} />
+          <Route path="/design-studio/new" element={<ScratchDesignStudio />} />
+          <Route path="/design-studio/:id" element={<DesignStudio />} />
+          <Route path="/design-studio/ai" element={<AiDesignStudio />} />
       </Routes>
     </div>
   );
