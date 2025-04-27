@@ -241,7 +241,7 @@ const PlaceOrder = () => {
           <div className="payment-method-selection">
             <p>Payment Method</p>
             <div>
-              {/* <label>
+              <label>
                 <input 
                   type="radio" 
                   value="card" 
@@ -249,7 +249,7 @@ const PlaceOrder = () => {
                   onChange={handlePaymentMethodChange} 
                 />
                 Card Payment
-              </label> */}
+              </label>
               <label>
                 <input 
                   type="radio" 
