@@ -12,6 +12,9 @@ import cartRouter from './routes/cartRoute.js';
 import supplierRoutes from './routes/supplierRoutes.js';
 import cardRoutes from './routes/cardRoutes.js';
 
+import designsRouter from './routes/designs.js';
+import furnitureRouter from './routes/furniture.js';
+
 
 dotenv.config();
 
@@ -20,6 +23,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // MongoDB connection
 connectDB();
@@ -34,6 +38,10 @@ app.use('/api/cart',cartRouter)
 app.use('/api/suppliers', supplierRoutes);
 app.use('/api', cardRoutes);
 
+app.use('/api/designs', designsRouter);
+app.use('/api/furniture', furnitureRouter);
+
+
 
 
 // Static file serving
@@ -44,7 +52,7 @@ app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 

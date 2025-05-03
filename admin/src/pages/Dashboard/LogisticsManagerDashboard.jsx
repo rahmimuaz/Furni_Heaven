@@ -45,9 +45,9 @@ function Dashboard() {
       {
         label: 'Number of Orders',
         data: orderData,
-        borderColor: 'tomato', 
-        backgroundColor: 'rgba(255, 99, 71, 0.2)', 
-        fill: true, 
+        borderColor: 'tomato', // Line color changed to tomato
+        backgroundColor: 'rgba(255, 99, 71, 0.2)', // Fill color (tomato with transparency)
+        fill: true, // Enable filling under the line
       },
     ],
   };
@@ -68,7 +68,7 @@ function Dashboard() {
     <div className="dashboard">
       <div className="LogisticSidebar">
         <ul>
-         {/* <li><Link to="/logistics">Dashboard</Link></li> */}
+          <li><Link to="/logistics">Dashboard</Link></li>
           <li><Link to="/sample">Manage Order</Link></li>
           <li><Link to="/sup">Supplier Manager</Link></li>
           <li><Link to="/drivers">Driver Details</Link></li>

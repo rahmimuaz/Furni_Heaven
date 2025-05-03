@@ -20,14 +20,13 @@ const UpdateModal = ({ isOpen, onRequestClose, product, onUpdate }) => {
   const [suppliers, setSuppliers] = useState([]); // State for suppliers
 
   const categories = [
-    'Building and Hardware', 
-    'Safety Gear', 
-    'Paint', 
-    'Tools', 
-    'Storage', 
-    'Lighting', 
-    'Gardening', 
-    'Fasteners'
+    'Living Room',  
+    'Bed Room', 
+    'Dining Room', 
+    'Office', 
+    'Outdoor', 
+    'Kitchen', 
+    'Plastic', 
   ];
 
   useEffect(() => {
