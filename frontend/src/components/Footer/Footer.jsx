@@ -54,7 +54,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="ifooter-bottom" style={{ textAlign: 'center', padding: '10px 0', color: '58311', color: 'white' }}>
+            <div className="ifooter-bottom" style={{ textAlign: 'center', padding: '10px 0', color: '58311' }}>
                 <p>&copy; {new Date().getFullYear()} FURNIHAVEN Furnitures. All Rights Reserved.</p>
             </div>
         </div>
