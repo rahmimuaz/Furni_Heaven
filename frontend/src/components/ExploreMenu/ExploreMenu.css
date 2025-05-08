@@ -1,75 +1,62 @@
-.explore-menu{
+.explore-menu {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #e5c2a7;
+    background-color: #f3f5fa;
 }
 
-.explore-menu h1{
+.explore-menu h1 {
     margin-left: 50px;
     color: #262626;
     font-weight: 500;
-
 }
 
 .explore-menu-text {
     max-width: 60%;
     color: #808080;
-    margin-left: 50px; /* Moves text to the left */
-    text-align: left; /* Align text to the left */
+    margin-left: 50px;
+    text-align: left;
 }
 
-
-.explore-menu-list{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+/* ✅ Fixed 3-column grid layout */
+.explore-menu-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Responsive grid */
     text-align: center;
-    margin: 20px 40px;
-    overflow-x: scroll;
+
 }
 
-.explore-menu-list::-webkit-scrollbar{
-    display: none;
-    
-}
 .explore-menu-list-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
-    background-color: transparent; /* No background */
+    background-color: transparent;
+    transition: transform 0.3s ease-in-out;
 }
 
 .explore-menu-list-item img {
-    width: 7.5vw; 
-    min-width: 80px;
-    cursor: pointer;
-    transition: 0.2s;
-    border-radius: 50%; /* Make image circular */
-    object-fit: cover; /* Maintain aspect ratio */
-    border: 2px solid #808080; /* Add border around the image */}
-
-.explore-menu-list-item p{
-    margin-top: 10px;
-    color: #747474;
-    font-size: max(1.4vw,16);
-    cursor: pointer;
-
-
+    width:475px;
+    height: 345px;
+    border-radius: 0%;
+    object-fit: cover;
+    border: 0px solid #ffffff;
 }
 
-.explore-menu hr{
-    margin: 10px 0px;
+.explore-menu-list-item p {
+    margin-top: 10px;
+    color: #747474;
+    font-size: max(1.4vw, 16px);
+    cursor: pointer;
+}
+
+.explore-menu hr {
+    margin: 10px 20px;
     height: 2px;
-    background-color: #e2e2e2;
+    background-color: #647088;
     border: none;
 }
 
-.explore-menu-list-item.active{
+.explore-menu-list-item.active {
     border: 4px solid tomato;
-    padding: 2px; 
+    padding: 2px;
 }
-

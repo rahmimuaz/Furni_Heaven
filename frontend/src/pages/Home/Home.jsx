@@ -7,42 +7,37 @@ import { StoreContext } from '../../context/StoreContext';
 import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
-    const [category, setCategory] = useState("All Products");
-    const { featuredProducts } = useContext(StoreContext);
+  const [category, setCategory] = useState("All Products");
+  const { featuredProducts } = useContext(StoreContext);
+  const productRef = useRef(null);
 
-    // Ref to scroll to the product section
-    const productRef = useRef(null);
+  const scrollToProducts = () => {
+    if (productRef.current) {
+      productRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-    // Function to scroll to the product section
-    const scrollToProducts = () => {
-        if (productRef.current) {
-            productRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+  const scrollToProduct = (productId) => {
+    const productElement = document.getElementById(productId);
+    if (productElement) {
+      productElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
-    // Function to scroll to a specific product
-    const scrollToProduct = (productId) => {
-        const productElement = document.getElementById(productId);
-        if (productElement) {
-            productElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    };
+  const filteredProducts = category === "All Products"
+    ? featuredProducts
+    : featuredProducts.filter(product => product.category === category);
 
-    // Filter products based on the selected category
-    const filteredProducts = category === "All Products"
-        ? featuredProducts
-        : featuredProducts.filter(product => product.category === category);
-
-    return (
-        <div className="home">
-            <Header scrollToProducts={scrollToProducts} />
-            <div ref={productRef}>
-                {/* <ExploreMenu category={category} setCategory={setCategory} /> */}
-                <ProductDisplay category={category} products={filteredProducts} scrollToProduct={scrollToProduct} />
-            </div>
-            <Footer />
-        </div>
-    );
-}
+  return (
+    <div className="home">
+      <Header scrollToProducts={scrollToProducts} />
+      <ExploreMenu category={category} setCategory={setCategory} scrollToProducts={scrollToProducts} />
+      <div ref={productRef}>
+        <ProductDisplay category={category} products={filteredProducts} scrollToProduct={scrollToProduct} />
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 export default Home;

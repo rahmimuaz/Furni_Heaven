@@ -1,6 +1,7 @@
 /* ProductDisplay.css */
 .product-display {
-    background-color: #e5c2a7;
+    background-color: #f3f5fa;
+    padding: 30px 60px;
 }
 
 .product-display h2 {
