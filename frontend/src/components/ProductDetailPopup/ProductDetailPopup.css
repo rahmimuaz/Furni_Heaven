@@ -99,7 +99,7 @@
 
 
 .button-group {
-    margin-top: 240px;
+    margin-top: 40px;
     display: flex;
     justify-content: center; /* Center button group */
     gap: 15px;
