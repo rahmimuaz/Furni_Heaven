@@ -1,6 +1,7 @@
 /* ProductDisplay.css */
 .product-display {
-    background-color: #e5c2a7;
+    background-color: #f3f5fa;
+    padding: 30px 60px;
 }
 
 .product-display h2 {
@@ -10,7 +11,7 @@
 
 .product-display-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Ensures responsive grid */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ensures responsive grid */
     margin-top: 30px;
     gap: 20px;
     margin-left: 50px;
@@ -32,7 +33,7 @@
 
 .product-item img {
     width: 100%; /* Makes image fill the container */
-    height: 200px; /* Fixed height for images */
+    height: 220px; /* Fixed height for images */
     object-fit: cover; /* Ensures images maintain their aspect ratio */
     border-radius: 8px 8px 0px 0px; /* Optional: rounded corners for images */
 }

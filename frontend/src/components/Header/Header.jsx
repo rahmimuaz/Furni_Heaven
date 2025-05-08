@@ -15,24 +15,12 @@
 
 // export default Header;
 
-import React from 'react';
+import React from 'react'; 
 import './Header.css';
 
 const Header = ({ scrollToProducts }) => {
   return (
-    <div className='header'>
-      {/* Video Background */}
-      <video 
-        autoPlay 
-        muted 
-        loop 
-        className="video-bg"
-        poster="/fallback-image.jpg" // Optional fallback image
-      >
-        <source src="/homepage.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      
+    <div className='header'>     
       <div className="header-contents">
         <h2>Bringing timeless beauty to every space</h2>
         <p>Explore our wide range of premium furniture to transform your space.<br/> Whether you're looking for elegant home décor or durable office furniture,<br/> find everything you need at FERNIHAVEN. Start creating your perfect space today!</p>

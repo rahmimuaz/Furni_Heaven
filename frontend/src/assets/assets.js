@@ -2,14 +2,15 @@ import basket_icon from './basket_icon.png'
 import logo from './logo.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
-import category_1 from './category_1.png'
-import category_2 from './category_2.png'
-import category_3 from './category_3.png'
-import category_4 from './category_4.png'
-import category_5 from './category_5.png'
-import category_6 from './category_6.png'
-import category_7 from './category_7.png'
+import category_1 from './category_1.jpg'
+import category_2 from './category_2.jpg'
+import category_3 from './category_3.jpg'
+import category_4 from './category_4.jpeg'
+import category_5 from './category_5.jpg'
+import category_6 from './category_6.jpeg'
+import category_7 from './category_7.jpeg'
 import category_8 from './category_8.png'
+import category_9 from './category_9.jpg'
 
 import product_garden1 from './product_garden1.png'
 import product_garden2 from './product_garden2.png'
@@ -114,6 +115,9 @@ export const category_list = [
     {
         menu_name: "Laundry",
         menu_image: category_8
+    }, {
+        menu_name: "Other",
+        menu_image: category_9
     }]
 
 export const product_list = [
