@@ -1,135 +1,227 @@
-/* Styling for the main container to ensure proper layout with Sidebar */
+
+/* Layout */
 .main-container {
   width: 100%;
-  height: 100vh; /* Full height of the viewport */
   display: flex;
-  font-family: Arial, sans-serif; /* Ensure a clean, modern font */
-  background-color: #e8d9c4;
+  flex-direction: row;
+  height: 100vh;  
 }
 
-/* Sidebar styling */
+
+/* Sidebar */
 .SalesSidebar {
-  width: 250px;
-  background-color: #3E160C; /* Darker background color for better contrast */
-  color: #fff;
+  width: 220px;
+  background-color: #121e40;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: fixed; /* Fix the sidebar to the left */
-  height: 100vh; /* Full height of the viewport */
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  color: #fff;
 }
 
-.SalesSidebar ul {
+.sidebar-list {
   list-style-type: none;
   padding: 0;
 }
 
-.SalesSidebar ul li {
-  margin: 15px 0;
+.sidebar-item {
+  margin: 20px 0;
 }
 
-.SalesSidebar ul li a {
+.sidebar-item a {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   display: block;
   padding: 10px;
-  border-radius: 4px;
-}
-
-.SalesSidebar ul li a:hover {
-  background-color: #555;
-  text-decoration: underline;
-}
-
-/* Product list container styling */
-.product-list-container {
-  margin: 0 auto; /* Center the product list container horizontally */
-  padding: 20px;
-  background-color: #fff;
-  overflow-y: auto; /* Scroll if content overflows */
-  max-width: 80%; /* Adjust the width as needed */
-  min-width: 300px; /* Ensure a minimum width for smaller screens */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Search input styling */
-.search-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-/* Notification section */
+.sidebar-item a:hover {
+  background-color: #34495e;
+}
+
+/* Main content */
+.product-list-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.product-list-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Search Input */
+.search-input {
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+/* Notification Section (top-right corner) */
 .notification-section {
-  position: fixed; /* Fix the position to the viewport */
-  top: 20px; /* Distance from the top */
-  right: 20px; /* Distance from the right */
-  display: inline-block; /* Ensure it takes only as much space as needed */
-  z-index: 1000; /* Make sure it appears above other content */
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 10;
 }
 
-/* Notification icon */
+.notification-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+}
+
 .noti-icon {
-  width: 30px; /* Resize notification icon */
-  height: auto; /* Maintain aspect ratio */
-  cursor: pointer; /* Change cursor to pointer on hover */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-/* Notification count styling */
 .notification-count {
   position: absolute;
-  top: 0; /* Position at the top */
-  right: 0; /* Position at the right */
-  background-color: red; /* Background color for count */
-  color: white; /* Text color */
-  border-radius: 50%; /* Make it a circle */
-  padding: 2px 6px; /* Adjust padding for better appearance */
-  font-size: 12px; /* Font size */
-  font-weight: bold; /* Make the font bold */
-  transform: translate(50%, -50%); /* Shift it slightly to the right and up for better alignment */
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
-/* Alerts popup styling */
+/* Ensure alerts popup doesn't hide behind other elements */
 .alerts-popup {
   position: absolute;
-  top: 40px; /* Position below the icon */
-  right: 0;
+  top: 60px;
+  right: 30px;
   background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  z-index: 1000; /* Ensure it stays above other elements */
-}
-
-/* Actions button styling */
-.actions {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px; /* Space between buttons */
-}
-
-/* Styling for table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
+  padding: 15px;
   border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  z-index: 20;
 }
 
-/* Low stock message styling */
 .low-stock-message {
   color: red;
   font-weight: bold;
+  font-size: 12px;
 }
 
+/* Supplier Selection */
+.supplier-selection {
+  width: 72%;
+  margin-top: 20px;
+}
+
+.supplier-selection label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.supplier-selection select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: #000;
+  
+}
+
+table th {
+  
+  background-color: #758eaf;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Edit Button */
+.actions button.edit {
+  background-color: #3498db;
+}
+
+.actions button.edit:hover {
+  background-color: #2980b9;
+}
+
+/* Delete Button */
+.actions button.delete {
+  background-color: #e74c3c;
+}
+
+.actions button.delete:hover {
+  background-color: #c0392b;
+}
+
+/* Low Stock Message */
+.low-stock-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.low-stock-message {
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Update Modal */
+.UpdateModal .modal-content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.UpdateModal .modal-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import SalesGraph from "../../components/SalesGraph/SalesGraph";
 import RevenueGraph from "../../components/Revenue/RevenueGraph";
 import notiIcon from '../../assets/noti_icon.jpeg'; 
 import './AdminDashboard.css';
+import Navbar from '../../components/Navbar/Navbar';
 
-
-const AdminDashboard = ({ totalOrders }) => { // Accept totalOrders as a prop
+const AdminDashboard = ({ totalOrders }) => {
   const [userCount, setUserCount] = useState(0);
-  const [lowStockAlerts, setLowStockAlerts] = useState([]); 
-  const [showAlertsPopup, setShowAlertsPopup] = useState(false); 
+  const [lowStockAlerts, setLowStockAlerts] = useState([]);
+  const [showAlertsPopup, setShowAlertsPopup] = useState(false);
 
   useEffect(() => {
     const fetchUserCount = async () => {
@@ -28,7 +28,7 @@ const AdminDashboard = ({ totalOrders }) => { // Accept totalOrders as a prop
 
     const fetchLowStockAlerts = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/api/product/list'); 
+        const response = await axios.get('http://localhost:5001/api/product/list');
         if (response.data.success) {
           const alerts = response.data.data.filter(product => product.quantity <= 5);
           setLowStockAlerts(alerts);
@@ -41,74 +41,75 @@ const AdminDashboard = ({ totalOrders }) => { // Accept totalOrders as a prop
     };
 
     fetchUserCount();
-    fetchLowStockAlerts(); 
+    fetchLowStockAlerts();
   }, []);
 
-  return (
-    <div className="admin-dashboard">
-      <div className="adminSidebar">
-        <ul className="sidebar-list">
-         {/*  <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li> */}
-          <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
-          <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
-          {/* <li className="sidebar-item"><Link to="/orders">Orders</Link></li> */}
-          {/*  <li className="sidebar-item"><Link to="/users">Users</Link></li>*/}
-          {/* <li className="sidebar-item"><Link to="/sales">Sales</Link></li> */}
-          {/* <li className="sidebar-item"><Link to="/register"> Register Employee</Link></li> */}
-        </ul>
-      </div>
-      <div className="dashboard-content">
+  // Inside the return statement of AdminDashboard
+return (
+ 
+  <div className="admin-dashboard">
+    {/* 🔧 Notification Icon moved here */}
+    <div className="notification-icon" onClick={() => setShowAlertsPopup(!showAlertsPopup)}>
+      <img src={notiIcon} alt="Notifications" className="noti-icon" />
+      {lowStockAlerts.length > 0 && <span className="notification-count">{lowStockAlerts.length}</span>}
+    </div>
+
+    {/* Sidebar */}
+    <div className="sidebar">
+      <ul className="sidebar-list">
+        <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
+        <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
+        <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
+      </ul>
+    </div>
+
+    {/* Main Content Area */}
+    <div className="main-content">
+      <div className="header">
         <h1>Admin Dashboard</h1>
+      </div>
 
-        <div className="notification-section">
-          <div className="notification-icon" onClick={() => setShowAlertsPopup(!showAlertsPopup)}>
-            <img src={notiIcon} alt="Notifications" className="noti-icon" />
-            {lowStockAlerts.length > 0 && <span className="notification-count">{lowStockAlerts.length}</span>}
-          </div>
+      {/* 🔧 Popup still in content */}
+      {showAlertsPopup && (
+        <div className="alerts-popup">
+          <h3>Low Stock Alerts</h3>
+          {lowStockAlerts.length > 0 ? (
+            <ul>
+              {lowStockAlerts.map(product => (
+                <li key={product._id}>
+                  {product.name}: {product.quantity} left
+                  <span className="low-stock-message">Low Stock</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No low stock alerts.</p>
+          )}
         </div>
+      )}
 
-        {showAlertsPopup && (
-          <div className="alerts-popup">
-            <h3>Low Stock Alerts</h3>
-            {lowStockAlerts.length > 0 ? (
-              <ul>
-                {lowStockAlerts.map(product => (
-                  <li key={product._id}>
-                    {product.name}: {product.quantity} left
-                    <span className="low-stock-message">Low Stock</span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No low stock alerts.</p>
-            )}
-          </div>
-        )}
-
-        <div className="stats-container">
-          <div className="stat-card">
-            <h3>Registered Users</h3>
-            <p className="stat-value">{userCount}</p>
-          </div>
-          {/* <div className="stat-card"> 
-            <h3>Number of Employees</h3>
-            <p className="stat-value">12</p> 
-          </div> */}
-          <div className="stat-card"> {/* New total orders card */}
-            <h3>Total Orders</h3>
-            <p className="stat-value">9</p>
-          </div>
+      {/* Statistics Section */}
+      <div className="stats-container">
+        <div className="stat-card">
+          <h3>Registered Users</h3>
+          <p className="stat-value">{userCount}</p>
         </div>
+        <div className="stat-card">
+          <h3>Total Orders</h3>
+          <p className="stat-value">{totalOrders || 9}</p>
+        </div>
+      </div>
 
-        <div className="graphs-container">
-          <SalesGraph />
-          <div className="revenue-graph-container">
-            <RevenueGraph />
-          </div>
+      {/* Graphs Section */}
+      <div className="graphs-container">
+        <SalesGraph />
+        <div className="revenue-graph-container">
+          <RevenueGraph />
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
+}
 
 export default AdminDashboard;

@@ -22,8 +22,6 @@ import DashboardAcess from "./pages/DashboardAccess/DashboardAccess"
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <hr />
       <div className="app-content">
         <Routes>
           <Route path="/" element={<DashboardAcess />} />

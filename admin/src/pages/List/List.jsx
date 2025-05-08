@@ -164,8 +164,6 @@ const List = () => {
         <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
           <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
           <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
-          <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
-          <li className="sidebar-item"><Link to="/users">Users</Link></li>
         </ul>
       </div>
       
