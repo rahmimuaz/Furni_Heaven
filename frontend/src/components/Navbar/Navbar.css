@@ -1,4 +1,16 @@
 
+.navbar {
+    position: fixed; /*Fixed at the top*/ 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    background: rgba(60, 56, 51, 0.6); /* Semi-transparent white */
+    align-items: center;
+    backdrop-filter: blur(10px); /* Increase blur effect */
+    padding: 5px 40px;
+  
+  }
 .navbar-logo {
     width: 150px;
 }

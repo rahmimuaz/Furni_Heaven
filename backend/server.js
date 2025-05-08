@@ -1,9 +1,8 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import 'dotenv/config'
+import 'dotenv/config';  // Keep this to load environment variables from .env
 import cors from 'cors';
-import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
+
 import productRouter from './routes/productRoute.js';
 import userRouter from './routes/userRoute.js';
 import driverRoutes from './routes/driverRoutes.js';
@@ -11,12 +10,7 @@ import orderRoutes from './routes/orderRoutes.js';
 import cartRouter from './routes/cartRoute.js';
 import supplierRoutes from './routes/supplierRoutes.js';
 import cardRoutes from './routes/cardRoutes.js';
-
-import designsRouter from './routes/designs.js';
 import furnitureRouter from './routes/furniture.js';
-
-
-dotenv.config();
 
 const app = express();
 
@@ -28,31 +22,23 @@ app.use(express.urlencoded({ extended: true }));
 // MongoDB connection
 connectDB();
 
-//API endpoint
-app.use("/api/product",productRouter)
-app.use("/images",express.static('uploads'))
-app.use("/api/user",userRouter)
-app.use('/drivers', driverRoutes);
-app.use('/api', orderRoutes);
-app.use('/api/cart',cartRouter)
-app.use('/api/suppliers', supplierRoutes);
-app.use('/api', cardRoutes);
+// API endpoints
+app.use("/api/product", productRouter);
+app.use("/api/user", userRouter);
+app.use("/drivers", driverRoutes);
+app.use("/api", orderRoutes);
+app.use("/api/cart", cartRouter);
+app.use("/api/suppliers", supplierRoutes);
+app.use("/api", cardRoutes);
+app.use("/api/furniture", furnitureRouter);
 
-app.use('/api/designs', designsRouter);
-app.use('/api/furniture', furnitureRouter);
-
-
-
-
-// Static file serving
-app.use('/images', express.static('uploads'));
+// Static files
+app.use("/images", express.static('uploads'));
 
 // Simple route
 app.get('/', (req, res) => {
-    res.send('API is running...');
+  res.send('API is running...');
 });
 
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-

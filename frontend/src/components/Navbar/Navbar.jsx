@@ -110,17 +110,18 @@ const Navbar = ({ setShowLogin, scrollToProduct }) => {
           </li>
         </Link>
 
-        <Link to='/design'>
-          <li
-            onClick={() => {
-              setMenu("Design");
-              handleCloseMenu();
-            }}
-            className={menu === "Design" ? "active" : ""}
-          >
-            Design
-          </li>
-        </Link>
+        <Link to='/furniture-designer'>
+  <li
+    onClick={() => {
+      setMenu("Design");
+      handleCloseMenu();
+    }}
+    className={menu === "Design" ? "active" : ""}
+  >
+    Design
+  </li>
+</Link>
+
 
         <Link to='/card'>
           <li

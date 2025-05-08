@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+const mongoose = require('mongoose');
 
-const furnitureSchema = new Schema({
+const furnitureSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -44,4 +44,4 @@ const furnitureSchema = new Schema({
   timestamps: true
 });
 
-export default model('Furniture', furnitureSchema); 
+module.exports = mongoose.model('Furniture', furnitureSchema); 
