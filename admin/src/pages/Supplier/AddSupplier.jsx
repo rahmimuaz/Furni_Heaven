@@ -11,10 +11,7 @@ const AddSupplier = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  };
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const validateForm = () => {
     const newErrors = {};
@@ -40,7 +37,7 @@ const AddSupplier = () => {
       setErrors(formErrors);
       return;
     }
-    setErrors({}); // Clear errors if there are none
+    setErrors({});
 
     axios
       .post('http://localhost:5001/api/suppliers/createSupplier', {
@@ -53,7 +50,7 @@ const AddSupplier = () => {
         navigate('/listSupplier');
       })
       .catch((err) => {
-        if (err.response && err.response.data.message) {
+        if (err.response?.data?.message) {
           setErrors({ ...errors, duplicate: err.response.data.message });
         } else {
           console.error(err);
@@ -64,70 +61,66 @@ const AddSupplier = () => {
 
   return (
     <div className='add-supplier-container'>
-      <div className="DriverListSidebar">
+      <aside className="sidebar">
         <ul>
           <li><Link to="/logistics">Dashboard</Link></li>
           <li><Link to="/addSupplier">Add Supplier</Link></li>
           <li><Link to="/listSupplier">List Supplier</Link></li>
           <li><Link to="/sup">Low Stock Products</Link></li>
         </ul>
-      </div>
-      <div className='create-user-container'>
-        <h2>Supplier Management</h2>
+      </aside>
+      <main className='form-wrapper'>
         <form onSubmit={Submit}>
-          <div className='mb-3 text-start'>
-            <label htmlFor='name' className='form-label'>Company Name</label>
+          <div className='form-group'>
+            <h2>Supplier Management</h2>
+            <label htmlFor='name'>Company Name</label>
             <input
               type='text'
               id='name'
-              className='form-control'
               placeholder='Enter Name'
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {errors.name && <div className='text-danger'>{errors.name}</div>}
+            {errors.name && <div className='error-text'>{errors.name}</div>}
           </div>
-          <div className='mb-3 text-start'>
-            <label htmlFor='companyName' className='form-label'>Supplier Name</label>
+          <div className='form-group'>
+            <label htmlFor='companyName'>Supplier Name</label>
             <input
               type='text'
               id='companyName'
-              className='form-control'
               placeholder='Enter Company Name'
               value={company_name}
               onChange={(e) => setCompany_Name(e.target.value)}
             />
-            {errors.company_name && <div className='text-danger'>{errors.company_name}</div>}
+            {errors.company_name && <div className='error-text'>{errors.company_name}</div>}
           </div>
-          <div className='mb-3 text-start'>
-            <label htmlFor='contactNumber' className='form-label'>Contact Number</label>
+          <div className='form-group'>
+            <label htmlFor='contactNumber'>Contact Number</label>
             <input
               type='tel'
               id='contactNumber'
-              className='form-control'
               placeholder='Enter Contact Number'
               value={contact_number}
               onChange={(e) => setContact_Number(e.target.value)}
             />
-            {errors.contact_number && <div className='text-danger'>{errors.contact_number}</div>}
+            {errors.contact_number && <div className='error-text'>{errors.contact_number}</div>}
           </div>
-          <div className='mb-3 text-start'>
-            <label htmlFor='email' className='form-label'>Email</label>
+          <div className='form-group'>
+            <label htmlFor='email'>Email</label>
             <input
               type='email'
               id='email'
-              className='form-control'
               placeholder='Enter Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {errors.email && <div className='text-danger'>{errors.email}</div>}
+            {errors.email && <div className='error-text'>{errors.email}</div>}
           </div>
-          {errors.duplicate && <div className='text-danger'>{errors.duplicate}</div>}
-          {errors.generic && <div className='text-danger'>{errors.generic}</div>}
+          {errors.duplicate && <div className='error-text'>{errors.duplicate}</div>}
+          {errors.generic && <div className='error-text'>{errors.generic}</div>}
           <button type='submit' className='btn-submit'>Submit</button>
         </form>
-      </div>
+      </main>
     </div>
   );
 };

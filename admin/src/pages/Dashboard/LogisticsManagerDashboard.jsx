@@ -46,7 +46,7 @@ function Dashboard() {
         label: 'Number of Orders',
         data: orderData,
         borderColor: 'tomato', // Line color changed to tomato
-        backgroundColor: 'rgba(255, 99, 71, 0.2)', // Fill color (tomato with transparency)
+        backgroundColor: 'rgba(84, 118, 210, 0.2)', // Fill color (tomato with transparency)
         fill: true, // Enable filling under the line
       },
     ],
@@ -74,7 +74,6 @@ function Dashboard() {
           <li><Link to="/drivers">Driver Details</Link></li>
           <li><Link to="/drivers/add">Add Driver</Link></li>
           <li><Link to="/drivers">Delete Driver</Link></li>
-          <li><Link to="/new">Leave Request</Link></li>
         </ul>
       </div>
       <div className="main-content">

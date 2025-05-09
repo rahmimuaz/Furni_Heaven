@@ -23,6 +23,7 @@ const App = () => {
   return (
     <div>
       <div className="app-content">
+         <Navbar />
         <Routes>
           <Route path="/" element={<DashboardAcess />} />
           <Route path="/add" element={<Add />} />

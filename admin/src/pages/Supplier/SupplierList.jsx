@@ -79,7 +79,7 @@ const SupplierList = () => {
     };
 
     return (
-        <div className="dashboard">
+        <div className="sup-dashboard">
             <div className="SupplierSidebar">
                 <ul>
                     <li><Link to="/logistics">Dashboard</Link></li>

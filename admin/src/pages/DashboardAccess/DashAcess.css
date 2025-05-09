@@ -1,12 +1,7 @@
 .Dash-page {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     min-height: 88vh; /* Full viewport height */
-    background-image: url('/../dashback.jpg');
-    display: flex;
     color: white; /* White text color */
     text-align: center; /* Center text alignment */
   }
@@ -28,7 +23,7 @@
     padding: 1.5rem 3rem; /* Button padding */
     font-size: 1.75rem; /* Button text size */
     color: white; /* Button text color */
-    background-color: #3e160c; /* Slightly darker orange for buttons */
+    background-color: #121e40; /* Slightly darker orange for buttons */
     border: none; /* Remove default border */
     border-radius: 10px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
@@ -36,7 +31,7 @@
   }
   
   .dnav-button:hover {
-    background-color: #785D32 !important;/* Darker orange on hover */
+    background-color: #4475c3 !important;/* Darker orange on hover */
   }
   .signout-btn {
     max-width: 200px;
@@ -49,7 +44,7 @@
 }
 
 .signout-btn:hover {
-    background-color: #785D32 !important;
+    background-color: #4475c3 !important;
 }
 
 /* Transparent box styling */

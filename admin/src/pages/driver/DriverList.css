@@ -1,19 +1,16 @@
 /* General Container for Driver List */
 .DriverListSidebar {
   display: flex; /* Keep the flexbox layout for sidebar and content */
-  height: 88vh; /* Same height as the form container */
   font-family: Arial, sans-serif; /* Ensure consistency in font */
+  min-height: 100vh; /* Full height for the sidebar */
 }
 
 /* Sidebar Styling */
 .DriverListSidebar {
   position: fixed; /* Fixed position to keep sidebar in view */
-  top: 114px; /* Align with the top (adjust based on your layout) */
-  left: 0; /* Align to the left */
   width: 250px; /* Set width for the sidebar */
-  height: calc(100% - 114px); /* Full height minus top spacing */
-  background-color: #3e160c; /* Sidebar background color */
-  color: #fff; /* Sidebar text color */
+    background-color: #121e40;
+    color: white;
   padding: 20px; /* Padding for the sidebar */
   display: flex;
   flex-direction: column;
@@ -68,7 +65,7 @@
 }
 
 .driver-table th {
-  background-color: #000000; /* Dark background for headers */
+  background-color: #1a3058; /* Dark background for headers */
   color: white; /* White text for headers */
 }
 

@@ -1,12 +1,13 @@
 .explore-menu {
-    width: 100%;
-    display: flex;
+    width: 95%;
+    align-items: center;
+    margin: 0 auto;
     flex-direction: column;
     background-color: #f3f5fa;
 }
 
 .explore-menu h1 {
-    margin-left: 50px;
+    margin-top: 50px;
     color: #262626;
     font-weight: 500;
 }
@@ -14,7 +15,6 @@
 .explore-menu-text {
     max-width: 60%;
     color: #808080;
-    margin-left: 50px;
     text-align: left;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .explore-menu-list-item img {
-    width:475px;
+    width:420px;
     height: 345px;
     border-radius: 0%;
     object-fit: cover;

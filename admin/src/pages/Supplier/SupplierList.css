@@ -1,212 +1,171 @@
-.supplier-list-content {
-    margin-left: 260px;
+/* Main dashboard layout */
+.sup-dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
-.users-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+/* Sidebar styling */
+.SupplierSidebar {
+  width: 250px;
+  background-color: #121e40;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.users-wrapper {
-    margin-top: 20px;
+.SupplierSidebar ul {
+ list-style: none;
+  padding: 0;
 }
 
-.form-search {
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-    width: 600px;
-    border:1px;
-    border-color:  #000000;
-    margin-left: 10px;
+.SupplierSidebar li {
+   margin-bottom: 15px;
 }
 
-.form-control {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 15px;
+.SupplierSidebar li a {
+ color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
+.SupplierSidebar li a:hover {
+   text-decoration: underline;
+}
 
-/* Add button */
+/* Main content section */
+.suppliers-content {
+  flex-grow: 1;
+  padding: 30px;
+  background-color: #f4f6f8;
+}
+
+.suppliers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
 .btn-add {
-    background-color: #123a6b !important;
-    height: 45px;
-    width: 90px;
-    font-size: 22px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    border: none;
-    padding: 10px;
-    margin-left: 27px;
-    margin-top: 30px;
+  background-color: #121e40;
+  color: white;
 }
 
-/* Sort button */
-
-/* Report generation button */
-.btn-warning {
-    background-color: #000000;
-    height: 35px;
-    width: 135px;
-    font-size: 15px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border: none;
-    margin-left: 8px;
+.btn-edit {
+  background-color: #121e40;
+  color: white;
+  margin-right: 8px;
 }
 
-.btn-warning:hover {
-    background-color: rgb(247, 99, 73);
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-toggle-sort {
+  background-color: #121e40;
+  color: white;
+  margin-left: 10px;
+}
+
+.btn-generate-pdf {
+  background-color: #121e40;
+  color: white;
+  margin-top: 20px;
+}
+
+/* Search and filter styles */
+.form-search input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
 /* Table styling */
 .table {
-    width: 98%;
-    margin-left: 40px;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .table th,
 .table td {
-    border: 1px solid #3d3b3b;
-    padding: 12px;
-    text-align: center;
-    font-size: 18px;
+ padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
 .table th {
-    background-color: rgb(247, 99, 73);
-    font-size: 20px;
-    color: #000000;
-   
-}
-
-.table tr:nth-child(even) {
-    background-color: #d6d5d5;
-}
-
-.table tr:hover {
-    background-color: rgb(255, 206, 196);
-}
-
-/* Filter select styling */
-.filter-wrapper {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-.form-select {
-    margin-right: 10px;
-    padding: 10px;
-    border: 1px solid #080808;
-    border-radius: 5px;
+  background-color: #123a6b;
+  color: white;
+  font-weight: bold;
 }
 
 /* Alerts */
 .alert {
-    padding: 10px;
-    margin-top: 20px;
-    border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 .alert-success {
-    background-color: rgb(255, 132, 116);
-    color: white;
+  background-color: #2ecc71;
+  color: white;
 }
 
 .alert-warning {
-    background-color: rgb(255, 7, 7);
-    color: black;
+  background-color: #f39c12;
+  color: white;
 }
 
+/* Responsive layout */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
 
-/* Container for buttons */
-.btn-container {
-    display: flex; /* Aligns buttons horizontally */
-    gap: 10px; /* Space between buttons */
-}
+  .SupplierSidebar {
+    width: 100%;
+    padding: 15px;
+  }
 
-/* Edit button */
-.btn-edit {
-    background-color: #123a6b !important;
-    padding: 10px 12px;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none; /* For the Link element */
-    border: none; /* Ensures it looks like a button */
-    transition: background-color 0.3s;
-    height: 32px;
-    width: 60px;
+  .suppliers-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table th,
+  .table td {
     font-size: 14px;
-    margin-right: 4px;
-}
-
-/* Delete button */
-.btn-delete {
-    padding: 8px 12px;
-    border-radius: 5px;
-    color: white;
-    height: 32px;
-    width: 60px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none; /* For the Link element */
-    border: none; /* Ensures it looks like a button */
-    transition: background-color 0.3s;
-    font-size: 14px;
-}
-
-
-/* Hover effects */
-.btn-edit:hover {
-    background-color: tomato;
-}
-
-.btn-delete:hover {
-    background-color: tomato;
-}
-.btn-generate-pdf {
-    background-color: #123a6b !important; /* Green background for the Generate PDF button */
-    color: white; /* White text */
-    padding: 10px 15px; /* Padding for the button */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Font size */
-    margin-top: 20px; /* Space above the button */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.btn-toggle-sort {
-    background-color: #123a6b !important; /* Blue background for the Sort button */
-    color: white; /* White text */
-    padding: 10px 15px; /* Padding for the button */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 14px; /* Font size */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.btn-toggle-sort:hover {
-    background-color: #123a6b ; /* Darker blue on hover */
+  }
 }

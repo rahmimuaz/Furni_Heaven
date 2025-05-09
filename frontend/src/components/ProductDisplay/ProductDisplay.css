@@ -4,7 +4,8 @@
     padding: 30px 60px;
 }
 
-.product-display h2 {
+.head {
+    margin-left: 600px;
     font-size: max(2vw, 24px);
     font-weight: 600;  
 }

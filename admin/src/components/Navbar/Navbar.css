@@ -1,9 +1,10 @@
 .navbar {
     display: flex;
+    max-height: 70px;
     justify-content: space-between;
     align-items: center;
     padding: 4px 2px; /* Further reduce padding */
-    background-color: #ad8b72;
+    background-color: rgb(170, 190, 208);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
 }
 

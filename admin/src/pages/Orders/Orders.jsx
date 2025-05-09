@@ -154,7 +154,7 @@ const Order = () => {
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div className="app-content" style={{ display: 'flex' }}>
+        <div className="orders-container">
             {/* Sidebar */}
             <div className="PrdAddSidebar" style={{ flex: '0 0 250px', padding: '10px', borderRight: '1px solid #ccc' }}>
                 <ul className="sidebar-list">
@@ -162,14 +162,10 @@ const Order = () => {
                     <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
                     <li className="sidebar-item"><Link to="/list">Inventory</Link></li>
                     <li className="sidebar-item"><Link to="/orders">Orders</Link></li>
-                    <li className="sidebar-item"><Link to="/users">Users</Link></li>
-                    <li className="sidebar-item"><Link to="/sales">Sales</Link></li>
-                    <li className="sidebar-item"><Link to="/register">Register Employee</Link></li>
-                    <li className="sidebar-item"><Link to="/acess">Other Dashboards</Link></li>
                 </ul>
             </div>
 
-            <div className="main-content" style={{ flex: '1', padding: '10px' }}>
+            <div className="orders-div" >
                 <h1 className="header1">Delivery Schedule</h1>
                 <h2>Total Orders: {totalOrders}</h2> {/* Display total number of orders */}
 

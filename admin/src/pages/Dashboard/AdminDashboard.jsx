@@ -55,7 +55,7 @@ return (
     </div>
 
     {/* Sidebar */}
-    <div className="sidebar">
+    <div className="LogisticSidebar">
       <ul className="sidebar-list">
         <li className="sidebar-item"><Link to="/dashboard/admin">Dashboard</Link></li>
         <li className="sidebar-item"><Link to="/add">Add Items</Link></li>
@@ -102,7 +102,6 @@ return (
 
       {/* Graphs Section */}
       <div className="graphs-container">
-        <SalesGraph />
         <div className="revenue-graph-container">
           <RevenueGraph />
         </div>

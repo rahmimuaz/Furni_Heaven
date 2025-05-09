@@ -7,12 +7,12 @@
   
   .PrdAddSidebar {
     width: 250px;
-    background-color: #121e40;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  background-color: #121e40;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   }
   .sidebar-item a:hover {
     background-color: #ff8c00;
