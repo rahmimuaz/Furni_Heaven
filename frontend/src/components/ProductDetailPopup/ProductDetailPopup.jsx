@@ -71,12 +71,6 @@ const ProductDetailPopup = ({ product, onClose }) => {
               <button className="view-cart-btn" onClick={() => navigate('/cart')}>
                 View Cart
               </button>
-              <button 
-                className="view-details-btn" 
-                onClick={() => product._id && navigate(`/product/${product._id}`)}
-              >
-                View Details
-              </button>
             </div>
           )}
         </div>

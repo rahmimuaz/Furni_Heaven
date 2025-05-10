@@ -1,204 +1,146 @@
+/* Wrapper to center content vertically and horizontally */
 .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Full height */
-    background-image: url('/../cardback.jpg'); /* Replace with the actual path to your image */
-    background-size: cover; /* Ensure the image covers the entire background */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat !important; /* Prevent the image from repeating */
-    padding: 20px;
+ margin-top: 70px;
+  justify-content: center;
+  align-items: center;
+
 }
 
+/* Inner container styles */
 .container {
-    background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent white background */
-    padding: 30px; /* Add more padding for better spacing */
-    border-radius: 12px; /* Increase border radius for a smoother look */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
-    max-width: 500px; /* Set a maximum width for the box */
-    width: 100%; /* Ensure it takes full width on smaller screens */
-    margin: auto; /* Center the box horizontally */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center; /* Center-align text */
-}
-.page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f5f5f5; /* Optional background color */
-    padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
 }
 
+/* Headings */
+.container h1,
+.container h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333333;
+  text-align: center;
+}
 
-/* Scrollable container for form and card details */
+/* Scrollable form section */
 .scroll-container {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
-/* Form styling */
-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+/* Form inputs */
+.container input[type="text"],
+.container input[type="month"],
+.container select {
+  width: 80%;
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  align-items: center;
 }
 
-form input,
-form select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1em;
+/* Button base styles */
+.container button {
+  display: block;
+  width: 80%;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
 }
 
-form button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Specific button styles */
+.add-card-btn {
+  background-color: #121e40;
+  color: #ffffff;
+  margin-top: 5px;
+}
+.add-card-btn:hover {
+  background-color: #005bb5;
 }
 
-form button:hover {
-    background-color: #0056b3;
+.retrieve-card-btn {
+  background-color: #121e40;
+  color: #ffffff;
+  margin-top: 5px;
+}
+.retrieve-card-btn:hover {
+  background-color: #218838;
 }
 
-/* Specific button names */
-button.add-card-btn {
-    background-color: #28a745;
-    width: 50%; /* Automatically adjust width based on content */
-    padding: 10px 20px; /* Add padding for better spacing */
-    font-size: 0.9em; /* Slightly smaller font size */
-    border-radius: 4px; /* Keep smooth corners */
-    text-align: center; /* Center-align text */
-    display: inline-block; /* Ensure proper alignment */
-    margin: 5px; /* Add spacing between buttons */
-    
+/* Message text */
+.container p {
+  text-align: center;
+  color: #555555;
+  margin-top: 15px;
 }
 
-button.add-card-btn:hover {
-    background-color: #218838;
-}
-
-button.retrieve-card-btn {
-    background-color: #17a2b8;
-    width: 50%; /* Automatically adjust width based on content */
-    padding: 10px 20px; /* Add padding for better spacing */
-    font-size: 0.9em; /* Slightly smaller font size */
-    border-radius: 4px; /* Keep smooth corners */
-    text-align: center; /* Center-align text */
-    display: inline-block; /* Ensure proper alignment */
-    margin: 5px; /* Add spacing between buttons */
-}
-
-button.retrieve-card-btn:hover {
-    background-color: #138496;
-}
-
-button.edit-card-btn {
-    background-color: #ffc107;
-}
-
-button.edit-card-btn:hover {
-    background-color: #e0a800;
-}
-
-button.delete-card-btn {
-    background-color: #dc3545;
-}
-
-button.delete-card-btn:hover {
-    background-color: #c82333;
-}
-
-/* Scrollable card details section */
+/* Card details container */
 .card-details-container {
-    max-height: 250px; /* Adjust height as needed */
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    width: 100%;
-    margin-top: 10px;
+  margin-top: 30px;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid #eeeeee;
 }
 
-/* Card display section */
+/* Individual card details */
 .card-details {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 6px;
-    margin: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
-
 .card-details p {
-    margin: 6px 0;
-    font-size: 1em;
+  margin: 5px 0;
+  color: #333333;
 }
 
-/* Modal styling */
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
+/* Edit/Delete buttons inside card details */
+.edit-card-btn,
+.delete-card-btn {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.2s ease;
+}
+.edit-card-btn {
+  background-color: #ffc107;
+  color: #ffffff;
+}
+.edit-card-btn:hover {
+  background-color: #e0a800;
+}
+.delete-card-btn {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+.delete-card-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+  }
+  .container h1 {
+    font-size: 1.25rem;
+  }
 }
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-.modal button {
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #28a745;
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.modal button:hover {
-    background-color: #218838;
-}
-
-.modal button.close-btn {
-    background-color: #6c757d;
-}
-
-.modal button.close-btn:hover {
-    background-color: #5a6268;
-}
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Full height */
-    background-color: #f4f4f4; /* Optional: Light background for contrast */
-    padding: 20px;
-}
-

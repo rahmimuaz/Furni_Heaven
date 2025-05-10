@@ -13,11 +13,8 @@ const Access = () => {
             <button className="dnav-button">Logistic Manager</button>
           </Link>
           
-          <Link to="/list">
+          <Link to="/dashboard/admin">
             <button className="dnav-button">Inventory</button>
-          </Link>
-          <Link to="/employee">
-            {/* <button className="dnav-button">Employee Dashboard</button> */}
           </Link>
         </div>
       </div>
