@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { jsPDF } from 'jspdf'; // Import jsPDF
 import './OrderConfirmation.css'; // Optional: Add CSS for styling
 
 const OrderConfirmation = () => {
@@ -17,6 +18,7 @@ const OrderConfirmation = () => {
     console.log('Order Details:', orderDetails);  // Check the console for output
   }, [orderDetails]);
 
+  // Function to render the order details in the table
   const renderOrderDetails = () => {
     const productKeys = Object.keys(orderDetails);
     
@@ -30,10 +32,41 @@ const OrderConfirmation = () => {
         <tr key={index}>
           <td>{item.name}</td>
           <td>{item.quantity}</td>
-          <td>{item.size ? `Size: ${item.size}` : 'N/A'}</td>
+          {/* <td>{item.size ? `Size: ${item.size}` : 'N/A'}</td> */}
         </tr>
       );
     });
+  };
+
+  // Function to generate the invoice
+  const generateInvoice = () => {
+    const doc = new jsPDF();
+
+    // Add title and order ID
+    doc.setFontSize(18);
+    doc.text('Invoice', 14, 20);
+    doc.setFontSize(12);
+    doc.text(`Order ID: ${formattedOrderId}`, 14, 30);
+
+    // Add order details table
+    const productKeys = Object.keys(orderDetails);
+    let currentY = 40;
+    doc.text('Product Name', 14, currentY);
+    doc.text('Quantity', 120, currentY);
+    currentY += 10;
+
+    productKeys.forEach((key) => {
+      const item = orderDetails[key];
+      doc.text(item.name, 14, currentY);
+      doc.text(item.quantity.toString(), 120, currentY);
+      currentY += 10;
+    });
+
+    // Add total amount
+    doc.text(`Total Amount: Rs.${totalAmount}`, 14, currentY + 10);
+
+    // Save the document as a PDF
+    doc.save(`invoice_${orderId}.pdf`);
   };
 
   return (
@@ -52,7 +85,7 @@ const OrderConfirmation = () => {
               <tr>
                 <th>Product Name</th>
                 <th>Quantity</th>
-                <th>Size</th>
+                {/* <th>Size</th> */}
               </tr>
             </thead>
             <tbody>
@@ -61,6 +94,11 @@ const OrderConfirmation = () => {
           </table>
 
           <h3>Total Amount: Rs.{totalAmount}</h3>
+
+          {/* Button to generate invoice */}
+          <button onClick={generateInvoice}>Generate Invoice</button>
+
+          {/* Button to navigate to Homepage */}
           <button onClick={() => navigate('/')}>Go to Homepage</button>
         </div>
       ) : (

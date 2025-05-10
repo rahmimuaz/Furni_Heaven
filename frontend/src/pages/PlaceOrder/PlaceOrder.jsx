@@ -241,7 +241,7 @@ const PlaceOrder = () => {
           <div className="payment-method-selection">
             <p>Payment Method</p>
             <div>
-              {/* <label>
+              <label>
                 <input 
                   type="radio" 
                   value="card" 
@@ -249,7 +249,7 @@ const PlaceOrder = () => {
                   onChange={handlePaymentMethodChange} 
                 />
                 Card Payment
-              </label> */}
+              </label> 
               <label>
                 <input 
                   type="radio" 
@@ -263,7 +263,7 @@ const PlaceOrder = () => {
             {formErrors.paymentMethod && <p className="error">{formErrors.paymentMethod}</p>}
           </div>
 
-          {/* {paymentMethod === 'card' && (
+           {paymentMethod === 'card' && (
             <div className="card-fetch">
               <input 
                 type="text" 
@@ -281,7 +281,7 @@ const PlaceOrder = () => {
                 </div>
               )}
             </div>
-          )} */}
+          )} 
 
           <button type="submit" disabled={loading}>
             {loading ? 'Placing Order...' : 'Place Order'}
